@@ -1,0 +1,185 @@
+.comments_sub_form_comments {
+    display: flex;
+    width: 90%;
+    margin-bottom: 20px;
+    gap: 10px;
+  }
+
+  .comment_ibox {
+    width: 80%;
+    padding: 10px 15px;
+    background-color: rgba(30, 30, 30, 0.7);
+    border: 1px solid #444;
+    border-radius: 4px;
+    color: #e0e0e0;
+    font-size: 14px;
+    transition: all 0.3s ease;
+  }
+
+  .comment_ibox:focus {
+    outline: none;
+    border-color: #3ea6ff;
+    box-shadow: 0 0 0 2px rgba(62, 166, 255, 0.3);
+  }
+
+  .comment_add_btn_comments {
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+    background-color: #3ea6ff;
+    color: #0f0f0f;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 0 15px;
+    transition: all 0.2s ease;
+  }
+
+  .comment_add_btn_comments:hover {
+    background-color: #2d96e8;
+    transform: translateY(-1px);
+  }
+
+  .display_comment_container {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  /* Individual comment styling */
+  .comment-item {
+    background-color: rgba(40, 40, 40, 0.5);
+    border-radius: 8px;
+    padding: 12px 15px;
+    border-left: 3px solid #3ea6ff;
+    transition: all 0.3s ease;
+  }
+
+  .comment-item:hover {
+    background-color: rgba(50, 50, 50, 0.7);
+    transform: translateX(2px);
+  }
+
+  /** display comment **/
+
+  .comment_body {
+    color: rgb(197, 197, 197);
+    margin: 0;
+    margin-top: 0.5rem;
+  }
+  .usercommented {
+    color: rgb(120, 120, 120);
+    margin: 0;
+    font-size: 0.9rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    align-items: center;
+  }
+
+  .location-info {
+    color: rgb(80, 140, 200);
+    font-style: italic;
+  }
+
+  .comment-time {
+    color: rgb(150, 150, 150);
+    margin-left: auto;
+  }
+  /* Comment Actions */
+.comment-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 5px 0 15px 0;
+    align-items: center;
+  }
+
+  /* Reaction Buttons */
+  .reaction-buttons {
+    display: flex;
+    gap: 8px;
+  }
+
+  .like-btn, .dislike-btn, .translate-btn, .edit-btn, .delete-btn {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background-color: #2a2a2a;
+    color: #e0e0e0;
+  }
+
+  .like-btn {
+    background-color: #1a472a;
+  }
+
+  .like-btn:hover {
+    background-color: #2e7d32;
+  }
+
+  .dislike-btn {
+    background-color: #7d1a1a;
+  }
+
+  .dislike-btn:hover {
+    background-color: #c62828;
+  }
+
+  .translate-btn {
+    background-color: #1a237e;
+  }
+
+  .translate-btn:hover {
+    background-color: #303f9f;
+  }
+
+  .edit-btn {
+    background-color: #0d47a1;
+  }
+
+  .edit-btn:hover {
+    background-color: #1976d2;
+  }
+
+  .delete-btn {
+    background-color: #b71c1c;
+  }
+
+  .delete-btn:hover {
+    background-color: #e53935;
+  }
+
+  /* Count display */
+  .count {
+    font-weight: bold;
+    min-width: 15px;
+    text-align: center;
+  }
+
+  /* Language tools */
+  .language-tools {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .language-dropdown {
+    padding: 5px;
+    background-color: #2a2a2a;
+    color: #e0e0e0;
+    border: 1px solid #444;
+    border-radius: 4px;
+  }
+
+  /* Owner actions */
+  .owner-actions {
+    display: flex;
+    gap: 8px;
+    margin-left: auto;
+  }
