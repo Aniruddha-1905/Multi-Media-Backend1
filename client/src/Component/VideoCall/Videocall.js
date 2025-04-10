@@ -320,13 +320,18 @@ const VideoCall = () => {
 
           {/* ID Display and Copy */}
           <div className="id-container">
-            <span className="id-display">Your ID: {yourID}</span>
-            <button
-              className="copy-button"
-              onClick={() => copyToClipboard(yourID)}
-            >
-              <RiFileCopyLine /> {idCopied ? 'Copied!' : 'Copy'}
-            </button>
+            <span className="id-label">Your ID (share this with friends to receive calls):</span>
+            <div className="id-value-container">
+              <span className="id-display">{yourID}</span>
+              <button
+                className="copy-button"
+                onClick={() => copyToClipboard(yourID)}
+              >
+                <RiFileCopyLine /> {idCopied ? 'Copied!' : 'Copy'}
+              </button>
+            </div>
+
+            <span className="id-label">Enter your friend's ID to make a call:</span>
           </div>
 
           {/* Call Input */}
