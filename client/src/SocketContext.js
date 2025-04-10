@@ -4,7 +4,7 @@ import SimplePeer from "simple-peer";
 
 const SocketContext = createContext();
 
-const socket = io('https://youtubeclone-nullclass.onrender.com/');
+const socket = io('https://multi-media-backend1.onrender.com/');
 //const socket = io('http://localhost:5000/');
 
 const ContextProvider = ({ children }) => {
