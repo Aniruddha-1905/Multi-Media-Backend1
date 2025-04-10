@@ -199,7 +199,7 @@ const Videopage = () => {
             <div className="video_player_custom" onClick={handleVideoClick}>
               <video
                 ref={videoRef}
-                src={`http://localhost:5000/${vv?.filepath}`}
+                src={`https://multi-media-backend1.onrender.com${vv?.filepath}`}
                 className="video_ShowVideo_videoPage"
                 controls
                 onEnded={handleVideoCompletion} // Handle video completion
