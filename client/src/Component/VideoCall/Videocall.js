@@ -2,13 +2,13 @@ import React, { useEffect, useRef, useState } from "react";
 import io from "socket.io-client";
 import SimplePeer from "simple-peer";
 import { RiPhoneFill } from "react-icons/ri";
-import { RiScreenshot2Line, RiScreenshot2Fill } from "react-icons/ri";
-import { RiRecordCircleFill, RiRecordCircleLine } from "react-icons/ri";
-import { RiFileCopyLine } from "react-icons/ri";
+import { RiVideoOnFill } from "react-icons/ri";
+import { RiVideoOffFill } from "react-icons/ri";
+import { RiChat4Fill } from "react-icons/ri";
+import { RiChatOffFill } from "react-icons/ri";
 import { ToastContainer, toast } from "react-toastify";
 import { useReactMediaRecorder } from "react-media-recorder";
 import "react-toastify/dist/ReactToastify.css";
-import "./VideoCall.css";
 
 const VideoCall = () => {
   const [stream, setStream] = useState(null);
@@ -19,21 +19,17 @@ const VideoCall = () => {
   const [yourID, setYourID] = useState("");
   const [friendID, setFriendID] = useState("");
   const [screenSharing, setScreenSharing] = useState(false);
+  const [recordedChunks, setRecordedChunks] = useState([]);
   const [recording, setRecording] = useState(false);
   const [inCall, setInCall] = useState(false);
   const [dots, setDots] = useState("");
-  const [recordingTime, setRecordingTime] = useState(0);
-  const [idCopied, setIdCopied] = useState(false);
-  const [mainVideo, setMainVideo] = useState('user'); // 'user' or 'partner'
-
   const userVideo = useRef();
   const partnerVideo = useRef();
   const screenStream = useRef();
+  const mediaRecorder = useRef();
   const peerRef = useRef();
   const socket = useRef();
-  const timerInterval = useRef(null);
-
-  const { startRecording, stopRecording, mediaBlobUrl } =
+  const { startRecording, stopRecording, mediaBlobUrl, status, previewStream } =
     useReactMediaRecorder({
       screen: true,
       audio: true,
@@ -41,7 +37,7 @@ const VideoCall = () => {
     });
 
   useEffect(() => {
-    socket.current = io.connect("https://multi-media-backend1.onrender.com/");
+    socket.current = io.connect("https://youtubeclone-nullclass.onrender.com/");
     //socket.current = io.connect("http://localhost:5000/");
     console.log("Use Effect running");
 
@@ -139,22 +135,18 @@ const VideoCall = () => {
         video: true,
       });
       setScreenSharing(true);
-      setMainVideo('screen');
       replaceTrack(screenStream.current.getVideoTracks()[0]);
       if (userVideo.current) {
         userVideo.current.srcObject = screenStream.current;
       }
-      toast.info("Screen sharing started");
     } catch (error) {
       console.error("Error sharing screen:", error);
-      toast.error("Failed to share screen");
     }
   };
 
   const stopScreenSharing = () => {
     screenStream.current.getTracks().forEach((track) => track.stop());
     setScreenSharing(false);
-    setMainVideo('user');
     navigator.mediaDevices
       .getUserMedia({ video: true, audio: true })
       .then((newStream) => {
@@ -163,53 +155,25 @@ const VideoCall = () => {
         if (userVideo.current) {
           userVideo.current.srcObject = newStream;
         }
-        toast.info("Screen sharing stopped");
       });
   };
 
   const replaceTrack = (newTrack) => {
     const peer = peerRef.current;
-    if (peer && peer.streams && peer.streams[0] && peer.streams[0].getVideoTracks()[0]) {
-      const sender = peer.streams[0].getVideoTracks()[0];
-      peer.replaceTrack(sender, newTrack, peer.streams[0]);
-    }
-  };
-
-  const formatTime = (seconds) => {
-    const mins = Math.floor(seconds / 60);
-    const secs = seconds % 60;
-    return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+    const sender = peer.streams[0].getVideoTracks()[0];
+    peer.replaceTrack(sender, newTrack, peer.streams[0]);
   };
 
   const handleStartRecording = () => {
     setRecording(true);
-    setRecordingTime(0);
     toast.info("Recording started");
     startRecording();
-
-    // Start timer
-    timerInterval.current = setInterval(() => {
-      setRecordingTime(prev => prev + 1);
-    }, 1000);
   };
 
   const handleStopRecording = () => {
     setRecording(false);
     toast.info("Recording stopped");
     stopRecording();
-
-    // Stop timer
-    if (timerInterval.current) {
-      clearInterval(timerInterval.current);
-      timerInterval.current = null;
-    }
-  };
-
-  const copyToClipboard = (text) => {
-    navigator.clipboard.writeText(text);
-    setIdCopied(true);
-    toast.info("ID copied to clipboard");
-    setTimeout(() => setIdCopied(false), 2000);
   };
   //this will stay here
   const checkTime = () => {
@@ -242,185 +206,239 @@ const VideoCall = () => {
     return () => clearInterval(interval);
   }, []);
 
-  // Clean up on unmount
-  useEffect(() => {
-    return () => {
-      if (timerInterval.current) {
-        clearInterval(timerInterval.current);
-      }
-      if (screenStream.current) {
-        screenStream.current.getTracks().forEach(track => track.stop());
-      }
-    };
-  }, []);
+  const vibrateStyle = `
+        @keyframes vibrate {
+            0% { transform: translate(0); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(-2px, -2px); }
+            60% { transform: translate(2px, 2px); }
+            80% { transform: translate(2px, -2px); }
+            100% { transform: translate(0); }
+        }
+    `;
+
+  const buttonStyle = {
+    backgroundColor: "green",
+    color: "white",
+    // borderRadius: '50%',
+    width: "40px",
+    height: "40px",
+    alignItems: "center",
+    justifyContent: "center",
+    border: "none",
+    cursor: "pointer",
+  };
+
+  const grayBtnStyle = {
+    color: "white",
+    borderRadius: "50%",
+    width: "50px",
+    height: "50px",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    border: "none",
+    cursor: "pointer",
+    margin: "0 10px", // Add margin to space out the buttons
+  };
+
+  const iconStyle = {
+    fill: "lightgray",
+    width: "24px",
+    height: "24px",
+  };
+
+  const grayIconStyle = {
+    fill: "darkgray",
+    width: "24px",
+    height: "24px",
+  };
+
+  const containerStyle = {
+    display: "flex",
+    alignItems: "center",
+    marginTop: "20px",
+    justifyContent: "center",
+  };
+
+  const callingContainer = {
+    alignItems: "center",
+    justifyContent: "center",
+  };
+
+  const inputStyle = {
+    width: "360px",
+    padding: "10px",
+    height: "40px", // Align the input height with the button height
+    boxSizing: "border-box", // Ensure padding and border are included in the element's total width and height
+  };
+
+  const acceptCallBtn = {
+    backgroundColor: "green",
+    color: "white",
+    borderRadius: "50%",
+    width: "50px",
+    height: "50px",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    border: "none",
+    cursor: "pointer",
+    marginLeft: "50%", // Add margin to space out the buttons
+    animation: "vibrate 0.5s infinite",
+  };
+  const endCallStyle = {
+    backgroundColor: "red",
+    color: "white",
+    borderRadius: "50%",
+    width: "50px",
+    height: "50px",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    border: "none",
+    cursor: "pointer",
+    margin: "0 10px", // Add margin to space out the buttons
+  };
 
   return (
-    <div className="video-call-container">
+    <div
+      style={{
+        width: "100%",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        flexDirection: "column",
+        marginTop: "20px",
+      }}
+    >
       {checkTime() ? (
-        <>
-          {/* Video Grid */}
-          <div className="video-grid">
-            {recording && (
-              <div className="recording-indicator">
-                <div className="recording-dot"></div>
-                <span className="recording-time">{formatTime(recordingTime)}</span>
-              </div>
-            )}
-
-            {stream && mainVideo === 'user' && (
+        <div>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              margin: "auto",
+            }}
+          >
+            {stream && (
               <video
-                className="video-stream main-video"
                 playsInline
                 muted
                 ref={userVideo}
                 autoPlay
+                style={{
+                  width: "400px",
+                  marginBottom: "10px",
+                  marginRight: "20px",
+                }}
               />
             )}
-
-            {callAccepted && mainVideo === 'partner' && (
+            {callAccepted && (
               <video
-                className="video-stream main-video"
                 playsInline
                 ref={partnerVideo}
                 autoPlay
-              />
-            )}
-
-            {stream && screenSharing && mainVideo === 'screen' && (
-              <video
-                className="video-stream main-video"
-                playsInline
-                muted
-                ref={userVideo}
-                autoPlay
-              />
-            )}
-
-            {stream && callAccepted && mainVideo !== 'user' && (
-              <video
-                className="video-stream secondary-video"
-                playsInline
-                muted
-                ref={userVideo}
-                autoPlay
-                onClick={() => setMainVideo('user')}
-              />
-            )}
-
-            {callAccepted && mainVideo !== 'partner' && (
-              <video
-                className="video-stream secondary-video"
-                playsInline
-                ref={partnerVideo}
-                autoPlay
-                onClick={() => setMainVideo('partner')}
+                style={{ width: "400px", marginBottom: "10px" }}
               />
             )}
           </div>
-
-          {/* ID Display and Copy */}
-          <div className="id-container">
-            <span className="id-label">Your ID (share this with friends to receive calls):</span>
-            <div className="id-value-container">
-              <span className="id-display">{yourID}</span>
-              <button
-                className="copy-button"
-                onClick={() => copyToClipboard(yourID)}
-              >
-                <RiFileCopyLine /> {idCopied ? 'Copied!' : 'Copy'}
+          <div>
+            <p style={{ color: "white", textAlign: "center" }}>
+              Your ID: {yourID}
+            </p>
+            <div style={containerStyle}>
+              <input
+                type="text"
+                placeholder="Enter friend's ID to call"
+                value={friendID}
+                onChange={(e) => setFriendID(e.target.value)}
+                style={inputStyle}
+              />
+              <button onClick={() => callPeer(friendID)} style={buttonStyle}>
+                <RiPhoneFill style={iconStyle} />
               </button>
             </div>
-
-            <span className="id-label">Enter your friend's ID to make a call:</span>
           </div>
-
-          {/* Call Input */}
-          <div className="call-input-container">
-            <input
-              className="call-input"
-              type="text"
-              placeholder="Enter friend's ID to call"
-              value={friendID}
-              onChange={(e) => setFriendID(e.target.value)}
-            />
-            <button
-              className="call-button"
-              onClick={() => callPeer(friendID)}
-            >
-              <RiPhoneFill /> Call
-            </button>
-          </div>
-
-          {/* Incoming Call */}
-          {receivingCall && !callAccepted && (
-            <div className="incoming-call">
-              <h2>{caller} is calling you{dots}</h2>
-              <button className="accept-button" onClick={acceptCall}>
-                <RiPhoneFill />
-              </button>
-            </div>
-          )}
-
-          {/* Control Buttons */}
-          <div className="controls-container">
-            <div className="tooltip">
-              <button
-                className={`control-button ${screenSharing ? 'active' : ''}`}
-                onClick={screenSharing ? stopScreenSharing : startScreenSharing}
-              >
-                {screenSharing ? <RiScreenshot2Fill /> : <RiScreenshot2Line />}
-              </button>
-              <span className="tooltip-text">
-                {screenSharing ? 'Stop Sharing' : 'Share Screen'}
-              </span>
-            </div>
-
-            <div className="tooltip">
-              <button
-                className={`control-button ${recording ? 'active' : ''}`}
-                onClick={recording ? handleStopRecording : handleStartRecording}
-              >
-                {recording ? <RiRecordCircleFill /> : <RiRecordCircleLine />}
-              </button>
-              <span className="tooltip-text">
-                {recording ? 'Stop Recording' : 'Start Recording'}
-              </span>
-            </div>
-
-            {inCall && (
-              <div className="tooltip">
-                <button className="control-button end-call" onClick={endCall}>
-                  <RiPhoneFill />
+          <style>{vibrateStyle}</style>
+          <div>
+            {receivingCall && !callAccepted && (
+              <div style={callingContainer}>
+                <h1 style={{ color: "white" }}>
+                  {caller} is calling you {dots}
+                </h1>
+                <button onClick={acceptCall} style={acceptCallBtn}>
+                  <RiPhoneFill style={iconStyle} />
                 </button>
-                <span className="tooltip-text">End Call</span>
+              </div>
+            )}
+            <ToastContainer position="top-right" autoClose={5000} />
+          </div>
+          <div style={containerStyle}>
+            <div>
+              {screenSharing ? (
+                <button onClick={stopScreenSharing} style={grayBtnStyle}>
+                  <RiChatOffFill style={grayIconStyle} />
+                </button>
+              ) : (
+                <button onClick={startScreenSharing} style={grayBtnStyle}>
+                  <RiChat4Fill style={grayIconStyle} />
+                </button>
+              )}
+            </div>
+            <div>
+              {recording ? (
+                <button onClick={handleStopRecording} style={endCallStyle}>
+                  <RiVideoOnFill style={grayIconStyle} />
+                </button>
+              ) : (
+                <button onClick={handleStartRecording} style={grayBtnStyle}>
+                  <RiVideoOffFill style={grayIconStyle} />
+                </button>
+              )}
+            </div>
+            <div>
+              {inCall && (
+                <button onClick={endCall} style={endCallStyle}>
+                  <RiPhoneFill style={iconStyle} />
+                </button>
+              )}
+            </div>
+          </div>
+          <div style={containerStyle}>
+            {mediaBlobUrl && (
+              <div>
+                <h2 style={{ color: "white", textAlign: "center" }}>Preview</h2>
+                <div style={containerStyle}>
+                  <video
+                    src={mediaBlobUrl}
+                    controls
+                    style={{
+                      width: "500px",
+                      marginBottom: "10px",
+                      marginRight: "20px",
+                    }}
+                  />
+                </div>
+                <div style={containerStyle}>
+                  <a
+                    href={mediaBlobUrl}
+                    download="recording.webm"
+                    style={{ color: "white", textAlign: "center",marginBottom: "20px" }}
+                  >
+                    Download Recording
+                  </a>
+                </div>
               </div>
             )}
           </div>
-
-          {/* Recording Preview */}
-          {mediaBlobUrl && (
-            <div className="preview-container">
-              <h3 className="preview-title">Recording Preview</h3>
-              <video
-                className="preview-video"
-                src={mediaBlobUrl}
-                controls
-              />
-              <a
-                className="download-link"
-                href={mediaBlobUrl}
-                download="recording.webm"
-              >
-                Download Recording
-              </a>
-            </div>
-          )}
-
-          <ToastContainer position="top-right" autoClose={3000} />
-        </>
+        </div>
       ) : (
-        <div className="time-restriction">
-          <h1>Video calls are only allowed from 6 PM to 12 AM</h1>
+        <div>
+          <h1 style={{ color: "white" }}>
+            Video calls are only allowed from 6 PM to 12 AM
+          </h1>
         </div>
       )}
     </div>
