@@ -1,0 +1,259 @@
+.container_downloadsPage {
+    border-bottom: 1px solid grey;
+    padding: 1rem 2rem;
+    color: aliceblue;
+}
+
+.downloads-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.title_container_DownloadsPage {
+    display: flex;
+    align-items: center;
+    margin: 0.5rem 0;
+}
+
+.downloads-icon {
+    font-size: 1.5rem;
+    margin-right: 0.5rem;
+    color: #3ea6ff;
+}
+
+.upgrade-premium-btn {
+    display: flex;
+    align-items: center;
+    background-color: #3ea6ff;
+    color: black;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 16px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.upgrade-premium-btn svg {
+    color: gold;
+    margin-right: 8px;
+    font-size: 1.2rem;
+}
+
+.upgrade-premium-btn:hover {
+    background-color: #2a93e0;
+}
+
+.premium-badge {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgba(255, 215, 0, 0.1);
+    border: 1px solid gold;
+    border-radius: 4px;
+    padding: 8px 16px;
+    margin-bottom: 1rem;
+    color: gold;
+    width: 100%;
+    max-width: 500px;
+}
+
+.premium-badge-content {
+    display: flex;
+    align-items: center;
+}
+
+.premium-badge-content svg {
+    margin-right: 8px;
+    font-size: 1.2rem;
+}
+
+.cancel-premium-btn {
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+    border: 1px solid rgba(255, 0, 0, 0.5);
+    border-radius: 4px;
+    padding: 4px 8px;
+    color: rgba(255, 0, 0, 0.8);
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.cancel-premium-btn svg {
+    margin-right: 4px;
+    font-size: 1rem;
+}
+
+.cancel-premium-btn:hover {
+    background-color: rgba(255, 0, 0, 0.1);
+}
+
+.download-limit-info {
+    background-color: rgba(62, 166, 255, 0.1);
+    border: 1px solid #3ea6ff;
+    border-radius: 4px;
+    padding: 8px 16px;
+    margin-bottom: 1rem;
+}
+
+.download-limit-info p {
+    margin: 5px 0;
+    color: #ddd;
+}
+
+.container_videoList_DownloadsPage {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 0;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.no-downloads {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 3rem 0;
+    color: #aaa;
+}
+
+.no-downloads svg {
+    color: #3ea6ff;
+    margin-bottom: 1rem;
+}
+
+.no-downloads p {
+    margin: 5px 0;
+}
+
+/* Premium Modal Styles */
+.premium-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.premium-modal {
+    background-color: #282828;
+    border-radius: 8px;
+    padding: 20px;
+    width: 400px;
+    max-width: 90%;
+    color: white;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.premium-modal h2 {
+    color: #3ea6ff;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.premium-modal p {
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.premium-features {
+    margin: 20px 0;
+}
+
+.premium-feature {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    color: #ddd;
+}
+
+.premium-feature svg {
+    color: gold;
+    margin-right: 10px;
+}
+
+.premium-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.premium-upgrade-btn, .premium-cancel-btn {
+    padding: 10px 15px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.premium-upgrade-btn {
+    background-color: #3ea6ff;
+    color: black;
+}
+
+.premium-upgrade-btn:hover {
+    background-color: #2a93e0;
+}
+
+.premium-cancel-btn {
+    background-color: transparent;
+    color: #ddd;
+    border: 1px solid #666;
+}
+
+.premium-cancel-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.premium-cancel-confirm-btn {
+    background-color: rgba(255, 0, 0, 0.8);
+    color: white;
+}
+
+.premium-cancel-confirm-btn:hover {
+    background-color: rgba(255, 0, 0, 1);
+}
+
+.premium-keep-btn {
+    background-color: #3ea6ff;
+    color: black;
+}
+
+.premium-keep-btn:hover {
+    background-color: #2a93e0;
+}
+
+.cancel-premium-info {
+    background-color: rgba(255, 0, 0, 0.05);
+    border: 1px solid rgba(255, 0, 0, 0.2);
+    border-radius: 4px;
+    padding: 10px 15px;
+    margin: 15px 0;
+}
+
+.cancel-premium-info p {
+    margin-bottom: 5px;
+    color: #ddd;
+    text-align: left;
+}
+
+.cancel-premium-info ul {
+    margin: 0;
+    padding-left: 20px;
+    color: #bbb;
+    text-align: left;
+}
+
+.cancel-premium-info li {
+    margin-bottom: 5px;
+}

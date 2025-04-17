@@ -1,0 +1,134 @@
+/* Import responsive framework */
+@import './styles/responsive.css';
+
+/* Base styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+.Chanel_logo_App{
+  width: 2.2rem;
+  height: 2.2rem;
+  margin: auto;
+  border-radius: 100%;
+  background-color: rgb(224,227,214);
+  display: flex;
+}
+
+.fstChar_logo_App{
+  margin: auto;
+  color: black;
+  font-weight: bolder;
+  cursor: pointer;
+}
+
+.container_Pages_App{
+  display: flex;
+  background-color: rgb(19,19,19);
+  flex-direction: row;
+}
+
+.container2_Pages_App{
+  width: calc(100vw - 5rem);
+  height: calc(100vh - 3.65rem);
+  border-top: 2px solid rgb(128,128,128,0.45);
+  overflow-y: auto;
+}
+
+.video_box_app{
+  width: 21rem;
+  height: 17rem;
+  margin-bottom: 1rem;
+  border: 2px solid transparent;
+}
+
+video {
+  background-color: rgba(8,8,8,0.662);
+}
+
+.dot{
+  height: 4px;
+  width: 4px;
+  border-radius: 100%;
+  background-color: white;
+  margin: auto 0.5rem;
+}
+
+/* Responsive styles */
+@media (max-width: 992px) {
+  .container_Pages_App {
+    flex-direction: column;
+  }
+
+  .container2_Pages_App {
+    width: 100vw;
+    height: calc(100vh - 7rem); /* Adjusted for mobile layout */
+    padding-bottom: 60px; /* Space for mobile menu */
+  }
+
+  .video_box_app {
+    width: 100%;
+    max-width: 21rem;
+    height: auto;
+    aspect-ratio: 16/9;
+    margin: 0 auto 1rem auto;
+  }
+
+  /* Adjust channel logo for tablets */
+  .Chanel_logo_App {
+    width: 2rem;
+    height: 2rem;
+  }
+}
+
+/* Medium devices (tablets) */
+@media (min-width: 577px) and (max-width: 768px) {
+  .container2_Pages_App {
+    height: calc(100vh - 6.5rem);
+  }
+
+  /* Adjust video grid for tablets */
+  .video-grid-container {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)) !important;
+  }
+}
+
+/* Small devices (phones) */
+@media (max-width: 576px) {
+  .Chanel_logo_App {
+    width: 1.8rem;
+    height: 1.8rem;
+  }
+
+  .container2_Pages_App {
+    height: calc(100vh - 6rem);
+  }
+
+  /* Adjust video grid for phones */
+  .video-grid-container {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)) !important;
+    gap: 0.5rem !important;
+  }
+
+  /* Adjust font sizes for mobile */
+  .video-title {
+    font-size: 0.9rem !important;
+    line-height: 1.2 !important;
+  }
+
+  .video-channel {
+    font-size: 0.8rem !important;
+  }
+
+  /* Improve touch targets on mobile */
+  button, .btn, .icon_sidebar_div {
+    min-height: 44px !important;
+    min-width: 44px !important;
+  }
+}

@@ -1,0 +1,97 @@
+.group-invite-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 4rem);
+  padding: 2rem;
+  background-color: var(--body-bg);
+}
+
+.group-invite-card {
+  background-color: var(--dark-primary);
+  border-radius: 8px;
+  padding: 2rem;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  text-align: center;
+}
+
+.group-invite-card h2 {
+  margin-bottom: 1.5rem;
+  color: white;
+}
+
+.loading-spinner {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  border: 5px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: var(--accent-color);
+  animation: spin 1s ease-in-out infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.success-message, .error-message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+}
+
+.success-message i {
+  font-size: 3rem;
+  color: #4CAF50;
+  margin-bottom: 1rem;
+}
+
+.error-message i {
+  font-size: 3rem;
+  color: #F44336;
+  margin-bottom: 1rem;
+}
+
+.login-button, .home-button {
+  margin-top: 1rem;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.login-button {
+  background-color: var(--accent-color);
+  color: white;
+  margin-right: 0.5rem;
+}
+
+.home-button {
+  background-color: #424242;
+  color: white;
+}
+
+.login-button:hover {
+  background-color: #0056b3;
+}
+
+.home-button:hover {
+  background-color: #616161;
+}
+
+/* Responsive styles */
+@media (max-width: 576px) {
+  .group-invite-card {
+    padding: 1.5rem;
+  }
+  
+  .group-invite-card h2 {
+    font-size: 1.5rem;
+  }
+}

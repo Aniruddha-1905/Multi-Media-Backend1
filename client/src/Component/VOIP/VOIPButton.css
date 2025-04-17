@@ -1,0 +1,175 @@
+.voip-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.2s ease;
+  position: relative;
+}
+
+.voip-tooltip {
+  position: absolute;
+  bottom: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+}
+
+.voip-button:hover .voip-tooltip {
+  opacity: 1;
+  visibility: visible;
+}
+
+.voip-button:hover {
+  background-color: #0069d9;
+}
+
+.voip-button i {
+  font-size: 1rem;
+}
+
+/* Modal styles */
+.voip-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.voip-modal {
+  background-color: white;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+}
+
+.voip-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.voip-modal-header h3 {
+  margin: 0;
+  color: #212529;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #6c757d;
+}
+
+.voip-modal-body {
+  padding: 1.5rem;
+}
+
+.voip-option {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  border: 1px solid #e9ecef;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.voip-option:hover {
+  background-color: #f8f9fa;
+}
+
+.voip-option i {
+  font-size: 1.5rem;
+  color: #007bff;
+}
+
+.voip-divider {
+  text-align: center;
+  margin: 1.5rem 0;
+  color: #6c757d;
+  position: relative;
+}
+
+.voip-divider::before,
+.voip-divider::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 40%;
+  height: 1px;
+  background-color: #e9ecef;
+}
+
+.voip-divider::before {
+  left: 0;
+}
+
+.voip-divider::after {
+  right: 0;
+}
+
+.voip-join-form {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.voip-join-form input {
+  flex: 1;
+  padding: 0.5rem;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+}
+
+.join-button {
+  padding: 0.5rem 1rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.join-button:hover {
+  background-color: #0069d9;
+}
+
+/* Responsive adjustments */
+@media (max-width: 576px) {
+  .voip-join-form {
+    flex-direction: column;
+  }
+
+  .join-button {
+    width: 100%;
+    margin-top: 0.5rem;
+  }
+}
