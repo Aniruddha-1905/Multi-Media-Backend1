@@ -44,7 +44,7 @@ const VOIP = () => {
   useEffect(() => {
     addDebugMessage('Initializing socket connection');
     // Connect to the socket server
-    socketRef.current = io('http://localhost:5000/', {
+    socketRef.current = io('https://multi-media-backend1.onrender.com/', {
       reconnectionAttempts: 10,
       reconnectionDelay: 1000,
       timeout: 10000,

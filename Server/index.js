@@ -35,6 +35,11 @@ app.get('/', (_, res) => {
     res.send("Your tube is working");
 });
 
+// Serve static files from the React app if in production
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static(path.join(__dirname, '../client/build')));
+}
+
 app.use(bodyParser.json());
 app.use('/user', userroutes);
 app.use('/video', videoroutes);
@@ -42,6 +47,28 @@ app.use('/comment', commentroutes);
 app.use('/groups', grouproutes);
 app.use('/download', downloadroutes);
 app.use('/subscription', subscriptionroutes);
+
+// This should be the last route, it's a catch-all for client-side routing
+app.get('*', (req, res, next) => {
+    // Don't interfere with API routes
+    if (req.url.startsWith('/api/') ||
+        req.url.startsWith('/user/') ||
+        req.url.startsWith('/video/') ||
+        req.url.startsWith('/comment/') ||
+        req.url.startsWith('/groups/') ||
+        req.url.startsWith('/download/') ||
+        req.url.startsWith('/subscription/')) {
+        return next();
+    }
+
+    // For all other routes, serve the React app
+    if (process.env.NODE_ENV === 'production') {
+        res.sendFile(path.join(__dirname, '../client/build/index.html'));
+    } else {
+        // In development, redirect to the React dev server
+        res.redirect('http://localhost:3000' + req.url);
+    }
+});
 
 const PORT = process.env.PORT || 5000;
 const DB_URL = process.env.DB_URL;
