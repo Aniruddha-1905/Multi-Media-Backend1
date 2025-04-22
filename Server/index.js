@@ -6,11 +6,17 @@ import bodyParser from "body-parser";
 import videoroutes from './Routes/video.js';
 import userroutes from "./Routes/User.js";
 import path from 'path';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
 import commentroutes from './Routes/comment.js';
 import grouproutes from './Routes/group.js';
 import downloadroutes from './Routes/download.js';
 import subscriptionroutes from './Routes/subscription.js';
 import { Server } from 'socket.io';
+
+// Get __dirname equivalent in ES modules
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 // Store active VOIP rooms and participants
 const voipRooms = {};
