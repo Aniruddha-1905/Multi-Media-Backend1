@@ -1,0 +1,637 @@
+.Container_Navbar{
+    border: 1px solid;
+    display: flex;
+    height: calc(3.5rem - 2px);
+    background-color: rgb(33, 33, 33);
+    justify-content: space-between;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 100;
+}
+.Burger_Logo_Navbar{
+    display: flex;
+    height: 3.3rem;
+}
+.burger{
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    justify-content: space-evenly;
+    margin: 0.2rem;
+    padding: 0.5rem;
+    border: 1 px solid transparent;
+    margin-left: 0.5rem;
+    margin-right: 0.7rem;
+    border-radius: 100%;
+}
+.burger p{
+    margin: 0.5px;
+    width: 1.2rem;
+    height: 0.1rem;
+    background-color: rgb(255, 244, 244);
+}
+.logo_div_Navbar{
+    display: flex;
+    text-decoration: none;
+}
+.logo_title_navbar{
+    margin: auto;
+    color: white;
+    font-weight: bold;
+}
+.apps_Box{
+    width: 25px;
+    margin: auto 0.7rem;
+    height: 25px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+
+}
+.appBox{
+    border: 1px solid white;
+    margin: 0.1rem;
+    width: 2px;
+    height: 2px;
+}
+.Auth_cont_Navbar{
+    width: fit-content;
+    margin: auto 0.5rem;
+    position: relative;
+    display: flex;
+}
+.Auth_Btn{
+    cursor: pointer;
+    color: #3ea6ff;
+    background-color: rgb(36,36,36);
+    border: 2px solid;
+    margin: 0;
+    padding: 0.5rem;
+    border-radius: 0.1rem;
+}
+
+/* Navbar styles */
+.navbar {
+    display: flex;
+    align-items: center;
+    margin-right: 15px;
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    margin-right: 20px;
+    font-weight: 500;
+}
+
+.nav-link:hover {
+    color: #3ea6ff;
+}
+
+/* Group icon styles */
+.groups-icon, .chat-icon, .video-call-btn {
+    position: relative;
+    margin-right: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    height: 40px;
+}
+
+.group-icon, .chat-btn {
+    color: white;
+    font-size: 20px;
+    margin-right: 5px;
+}
+
+.group-text {
+    color: white;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.group-icon:hover, .chat-btn:hover, .groups-icon:hover .group-icon, .groups-icon:hover .group-text {
+    color: #3ea6ff;
+}
+
+/* Groups dropdown */
+.groups-list, .chat-dropdown {
+    position: absolute;
+    top: 40px;
+    right: 0;
+    width: 250px;
+    background-color: #282828;
+    border-radius: 4px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    padding: 10px;
+}
+
+.groups-header, .chat-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #3f3f3f;
+    margin-bottom: 10px;
+}
+
+.groups-header h3, .chat-header h3 {
+    color: white;
+    margin: 0;
+    font-size: 16px;
+}
+
+.group-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.search-group-btn {
+    background-color: transparent;
+    color: #3ea6ff;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    border-radius: 3px;
+}
+
+.search-group-btn:hover {
+    background-color: rgba(62, 166, 255, 0.1);
+}
+
+.create-group-btn {
+    background-color: #3ea6ff;
+    color: black;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    font-size: 12px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.group-search {
+    margin-bottom: 15px;
+}
+
+/* Group invite link styles */
+.group-invite-section {
+    padding: 10px;
+    border-bottom: 1px solid #3f3f3f;
+    margin-bottom: 15px;
+}
+
+.group-invite-section h4 {
+    margin: 0 0 8px 0;
+    font-size: 14px;
+    color: #fff;
+    font-weight: 500;
+}
+
+.invite-link-form {
+    display: flex;
+    margin-bottom: 8px;
+}
+
+.invite-link-input {
+    flex: 1;
+    background-color: #121212;
+    border: 1px solid #3f3f3f;
+    color: white;
+    padding: 8px 10px;
+    border-radius: 3px 0 0 3px;
+    font-size: 13px;
+}
+
+.invite-link-input:focus {
+    border-color: #3ea6ff;
+    outline: none;
+}
+
+.join-link-btn {
+    background-color: #3ea6ff;
+    color: black;
+    border: none;
+    padding: 0 12px;
+    border-radius: 0 3px 3px 0;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.join-link-btn:hover {
+    background-color: #2d96e8;
+}
+
+.join-link-btn:disabled {
+    background-color: #2a7ab3;
+    cursor: not-allowed;
+}
+
+.invite-link-error {
+    color: #ff6b6b;
+    font-size: 12px;
+    margin-top: 5px;
+    text-align: center;
+}
+
+.group-search form {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.search-input {
+    flex: 1;
+    padding: 8px 12px;
+    border: 1px solid #3f3f3f;
+    background-color: #1f1f1f;
+    color: white;
+    border-radius: 3px 0 0 3px;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+.search-input:focus {
+    border-color: #3ea6ff;
+    box-shadow: 0 0 0 1px rgba(62, 166, 255, 0.3);
+}
+
+.search-btn {
+    background-color: #3ea6ff;
+    color: black;
+    border: none;
+    padding: 0 12px;
+    border-radius: 0 3px 3px 0;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.search-btn:hover {
+    background-color: #2d96e8;
+}
+
+.search-btn:disabled {
+    background-color: #2a7ab3;
+    cursor: not-allowed;
+}
+
+.search-loading {
+    color: #aaa;
+    text-align: center;
+    padding: 10px 0;
+    font-style: italic;
+}
+
+.search-results {
+    max-height: 250px;
+    overflow-y: auto;
+    border-top: 1px solid #3f3f3f;
+    padding-top: 10px;
+}
+
+.search-results-header {
+    color: #3ea6ff;
+    font-size: 12px;
+    margin-bottom: 8px;
+    text-align: center;
+    font-weight: 500;
+}
+
+.search-result-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 5px;
+    border-bottom: 1px solid #3f3f3f;
+    transition: background-color 0.2s ease;
+}
+
+.search-result-item:hover {
+    background-color: rgba(62, 166, 255, 0.1);
+}
+
+.search-result-info {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    overflow: hidden;
+}
+
+.search-result-name {
+    color: white;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.search-result-desc {
+    color: #aaa;
+    font-size: 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 150px;
+}
+
+.search-result-members {
+    color: #666;
+    font-size: 11px;
+    margin-top: 2px;
+}
+
+.member-badge {
+    display: inline-block;
+    background-color: rgba(0, 128, 0, 0.2);
+    color: #4caf50;
+    font-size: 10px;
+    padding: 2px 6px;
+    border-radius: 10px;
+    margin-top: 4px;
+    font-weight: 500;
+}
+
+.view-group-btn {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 4px 10px;
+    border-radius: 3px;
+    font-size: 12px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.2s ease;
+}
+
+.view-group-btn:hover {
+    background-color: #3d8b40;
+}
+
+.join-group-btn {
+    background-color: #3ea6ff;
+    color: black;
+    border: none;
+    padding: 4px 8px;
+    border-radius: 3px;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.no-results {
+    color: #aaa;
+    text-align: center;
+    padding: 10px 0;
+    font-size: 14px;
+}
+
+.no-results p {
+    margin: 5px 0;
+}
+
+.search-tip {
+    color: #666;
+    font-size: 12px;
+    font-style: italic;
+}
+
+.group-item {
+    display: flex;
+    align-items: center;
+    padding: 8px 5px;
+    color: white;
+    text-decoration: none;
+    border-radius: 3px;
+}
+
+.group-item:hover {
+    background-color: #3f3f3f;
+}
+
+.group-item-icon {
+    margin-right: 10px;
+    font-size: 16px;
+    color: #3ea6ff;
+}
+
+.no-groups, .no-messages {
+    color: #aaa;
+    text-align: center;
+    padding: 15px 0;
+    font-size: 14px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  .Container_Navbar {
+    height: auto;
+    min-height: calc(3.5rem - 2px);
+    padding: 0.5rem 0;
+    flex-wrap: wrap;
+  }
+
+  .logo_title_navbar {
+    font-size: 1rem;
+  }
+
+  .groups-list, .chat-dropdown {
+    width: 280px;
+    right: -70px;
+  }
+
+  .groups-list::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    right: 80px;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid #282828;
+  }
+
+  .group-text {
+    display: none;
+  }
+
+  .video-call-join-form {
+    flex-direction: column;
+  }
+
+  .join-button {
+    width: 100%;
+    margin-top: 0.5rem;
+  }
+
+  /* Improve navbar layout on tablets */
+  .Burger_Logo_Navbar {
+    flex: 0 0 auto;
+    width: auto;
+  }
+
+  .SearchBar_Container {
+    flex: 1 1 auto;
+    order: 0;
+  }
+
+  .groups-icon, .video-call-button-wrapper, .vid_bell_Navbar, .Auth_cont_Navbar {
+    flex: 0 0 auto;
+  }
+}
+
+/* Small devices (phones and tablets) */
+@media (max-width: 768px) {
+  .Container_Navbar {
+    justify-content: space-between;
+    gap: 0.5rem;
+    padding: 0.5rem;
+  }
+
+  .Burger_Logo_Navbar {
+    flex: 0 0 auto;
+    justify-content: flex-start;
+  }
+
+  .SearchBar_Container {
+    order: 3;
+    width: 100%;
+    margin: 0.5rem 1rem;
+    flex: 1 0 100%;
+  }
+
+  .SearchBar_Container2 {
+    width: 100%;
+  }
+
+  .search_div {
+    width: 100%;
+  }
+
+  .iBox_SearchBar {
+    width: 100%;
+    max-width: none;
+  }
+
+  .Auth_cont_Navbar {
+    margin-left: auto;
+  }
+
+  .navbar {
+    display: none;
+  }
+
+  .apps_Box {
+    display: none;
+  }
+
+  /* Improve spacing between navbar elements */
+  .groups-icon, .video-call-button-wrapper, .vid_bell_Navbar {
+    margin: 0 0.3rem;
+  }
+
+  /* Adjust dropdown positioning */
+  .groups-list, .chat-dropdown {
+    width: 250px;
+    right: -50px;
+    max-height: 80vh;
+    overflow-y: auto;
+  }
+}
+
+/* Extra small devices (phones) */
+@media (max-width: 576px) {
+  .Container_Navbar {
+    padding: 0.3rem;
+  }
+
+  .burger {
+    margin-left: 0.2rem;
+    margin-right: 0.3rem;
+  }
+
+  .logo_div_Navbar img {
+    width: 24px;
+    height: 24px;
+  }
+
+  .logo_title_navbar {
+    font-size: 0.9rem;
+  }
+
+  .groups-icon, .chat-icon, .video-call-btn {
+    margin-right: 8px;
+  }
+
+  .vid_bell_Navbar {
+    margin: auto 0.2rem;
+  }
+
+  .Auth_Btn {
+    padding: 0.3rem;
+    font-size: 0.8rem;
+  }
+
+  .Auth_Btn b {
+    display: none;
+  }
+
+  .groups-list, .chat-dropdown {
+    width: 230px;
+    right: -30px;
+  }
+
+  /* Improve search bar on small phones */
+  .SearchBar_Container {
+    margin: 0.3rem 0.5rem;
+  }
+
+  .searchIcon_SearchBar {
+    padding: 0.5rem;
+  }
+
+  /* Optimize group search UI for small screens */
+  .search-input {
+    font-size: 13px;
+    padding: 6px 8px;
+  }
+
+  .search-btn {
+    padding: 0 8px;
+    font-size: 12px;
+  }
+
+  /* Optimize invite link UI for small screens */
+  .invite-link-input {
+    font-size: 13px;
+    padding: 6px 8px;
+  }
+
+  .join-link-btn {
+    padding: 0 8px;
+    font-size: 12px;
+  }
+
+  .group-invite-section h4 {
+    font-size: 13px;
+  }
+
+  .search-result-item {
+    padding: 6px 3px;
+  }
+
+  .search-result-name {
+    font-size: 13px;
+  }
+
+  .search-result-desc {
+    font-size: 11px;
+    max-width: 120px;
+  }
+}

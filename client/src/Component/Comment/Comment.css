@@ -1,0 +1,210 @@
+.comments_sub_form_comments {
+  display: flex;
+  width: 70%;
+}
+
+.comment_ibox {
+  width: 80%;
+  padding: 0.5%;
+  padding-left: 2%;
+  background-color: transparent;
+  border: 0;
+  color: wheat;
+  border-bottom: 2px solid grey;
+}
+
+.comment_add_btn_comments {
+  cursor: pointer;
+  border: 2px solid transparent;
+  border-bottom: 2px solid rgb(64, 64, 64);
+  background-color: transparent;
+  color: aliceblue;
+  font-size: large;
+  width: 20%;
+}
+
+.comment_add_btn_comments:hover {
+  border: 2px solid rgba(64, 64, 64, 0.05);
+  border-bottom: 2px solid rgb(64, 64, 64);
+  background-color: rgba(240, 248, 255, 0.05);
+}
+
+.display_comment_container {
+  padding: 1rem;
+}
+
+/** display comment **/
+
+.comment-container {
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  border-radius: 8px;
+  background-color: rgba(0, 0, 0, 0.1);
+  transition: background-color 0.2s ease;
+}
+
+.comment-container:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.comment_body {
+  color: rgb(197, 197, 197);
+  margin: 0;
+  margin-top: 0.5rem;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.usercommented {
+  color: rgb(120, 120, 120);
+  margin: 0.5rem 0;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.user-location {
+  display: block;
+  color: rgb(180, 180, 180);
+  font-style: italic;
+  margin-top: 0.3rem;
+  font-size: 0.9rem;
+}
+
+.comment-time {
+  display: block;
+  color: rgb(150, 150, 150);
+  font-size: 0.85rem;
+  margin-top: 0.2rem;
+  font-weight: 500;
+}
+
+.comment-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.comment-reactions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.reaction-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.3rem 0.6rem;
+  border: none;
+  border-radius: 4px;
+  background-color: transparent;
+  color: rgb(150, 150, 150);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.like-btn:hover {
+  background-color: rgba(0, 128, 0, 0.1);
+  color: rgb(0, 180, 0);
+}
+
+.dislike-btn:hover {
+  background-color: rgba(128, 0, 0, 0.1);
+  color: rgb(180, 0, 0);
+}
+
+.reaction-count {
+  font-weight: bold;
+}
+
+.user-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.translation-controls {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.language-dropdown {
+  padding: 0.3rem;
+  border-radius: 4px;
+  border: 1px solid rgb(100, 100, 100);
+  background-color: rgba(0, 0, 0, 0.2);
+  color: rgb(200, 200, 200);
+}
+
+.action-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.3rem 0.6rem;
+  border: none;
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, 0.2);
+  color: rgb(200, 200, 200);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.action-btn:hover {
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.translate-btn {
+  background-color: rgba(0, 0, 128, 0.2);
+}
+
+.translate-btn:hover {
+  background-color: rgba(0, 0, 128, 0.4);
+}
+
+.edit-btn {
+  background-color: rgba(0, 128, 128, 0.2);
+}
+
+.edit-btn:hover {
+  background-color: rgba(0, 128, 128, 0.4);
+}
+
+.delete-btn {
+  background-color: rgba(128, 0, 0, 0.2);
+}
+
+.delete-btn:hover {
+  background-color: rgba(128, 0, 0, 0.4);
+}
+
+.edit-comment-form {
+  margin-bottom: 1rem;
+}
+
+.location-loading {
+  color: rgb(180, 180, 180);
+  font-size: 0.9rem;
+  margin: 0.5rem 0;
+  font-style: italic;
+  display: flex;
+  align-items: center;
+}
+
+.location-loading:before {
+  content: "";
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin-right: 8px;
+  border: 2px solid rgb(180, 180, 180);
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: location-spinner 1s linear infinite;
+}
+
+@keyframes location-spinner {
+  to { transform: rotate(360deg); }
+}

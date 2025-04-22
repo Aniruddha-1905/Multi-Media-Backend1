@@ -1,0 +1,429 @@
+.container_videoPage {
+    height: calc(100vh - 3.4rem);
+    overflow-y: auto;
+    background-color: rgb(11, 11, 11);
+    color: white;
+}
+.container2_videoPage {
+    margin: 1.5rem 4.5rem;
+    display: flex;
+}
+.video_display_screen_videoPage {
+    width: calc(100vw - 4.5rem - 35vw);
+    padding: 1rem;
+}
+
+.video-container {
+    position: relative;
+    width: 100%;
+    height: 70vh;
+}
+
+.video_ShowVideo_videoPage {
+    padding: 0.1rem;
+    height: 100%;
+    width: 100%;
+    background-color: black;
+    border: 1px solid rgba(37, 37, 37, 0.2);
+}
+
+.custom-video-controls {
+    position: absolute;
+    bottom: 50px;
+    right: 20px;
+    z-index: 10;
+    display: flex;
+    gap: 10px;
+}
+
+.loop-button {
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.loop-button:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.loop-button.active {
+    background-color: #3ea6ff;
+}
+
+.loop-icon {
+    font-size: 20px;
+}
+
+.video_btns_title_VideoPage_cont {
+    border-bottom: 3px solid rgba(245, 222, 179, 0.175);
+    flex-grow: 1;
+}
+.video_title_VideoPage {
+    font-size: x-large;
+    margin: 0;
+    padding: 1rem 0.8rem;
+}
+.views_date_btns_VideoPage {
+    display: flex;
+    margin: 0.5rem 1rem;
+    width: calc(100vw - 6.5rem - 35vw);
+}
+.views_videoPage {
+    display: flex;
+    font-size: 0.8rem;
+    flex-grow: 1;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.video-timestamp {
+    margin-left: 0.3rem;
+    color: rgba(245, 222, 179, 0.9);
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.chanel_details_videoPage {
+    border-bottom: 3px solid rgba(245, 222, 179, 0.175);
+    display: flex;
+    text-decoration: none;
+    color: aliceblue;
+    font-weight: bolder;
+}
+.chanel_logo_videoPage {
+    display: flex;
+    border: 1px solid rgba(0, 0, 0, 0.19);
+    width: 4rem;
+    height: 4rem;
+    margin: 0.5rem;
+    background-color: rgba(255, 255, 255, 0.667);
+    border-radius: 100%;
+}
+
+.chanel_logo_videoPage p {
+    color: black;
+    margin: auto;
+    font-size: xx-large;
+}
+.chanel_name_videoPage {
+    font-weight: bolder;
+    margin: auto 1rem;
+    font-size: larger;
+}
+.comments_VideoPage{
+    width: 100%;
+    padding-inline-start: 0.5rem;
+}
+.moreVideoBar{
+    width: calc(100vw - 4.5rem - 70vw);
+    padding: 0 1rem;
+}
+
+/* Video player custom container */
+.video_player_custom {
+    position: relative;
+    width: 100%;
+    height: 70vh;
+    background-color: black;
+}
+
+/* Time warning overlay */
+.time-warning-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+
+.time-warning-message {
+    background-color: #202124;
+    border: 2px solid #3ea6ff;
+    border-radius: 8px;
+    padding: 20px;
+    max-width: 80%;
+    text-align: center;
+}
+
+.time-warning-message h3 {
+    color: #3ea6ff;
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+.time-warning-message p {
+    margin-bottom: 20px;
+    font-size: 16px;
+    line-height: 1.4;
+}
+
+.time-warning-actions {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.upgrade-btn, .dismiss-btn {
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    border: none;
+    font-weight: bold;
+}
+
+.upgrade-btn {
+    background-color: #3ea6ff;
+    color: #202124;
+}
+
+.dismiss-btn {
+    background-color: #444;
+    color: white;
+}
+
+.time-remaining {
+    position: absolute;
+    bottom: 60px;
+    right: 10px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 14px;
+    z-index: 5;
+}
+
+.time-remaining-clock {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: bold;
+    z-index: 5;
+    font-family: monospace;
+}
+
+.downloaded-video-badge {
+    position: absolute;
+    bottom: 60px;
+    right: 10px;
+    background-color: rgba(0, 128, 0, 0.8);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 14px;
+    z-index: 5;
+    font-weight: bold;
+}
+
+.blocked-video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 20;
+}
+
+.blocked-video-message {
+    background-color: #202124;
+    border: 2px solid #ff3d00;
+    border-radius: 8px;
+    padding: 20px;
+    max-width: 80%;
+    text-align: center;
+}
+
+.blocked-video-message h3 {
+    color: #ff3d00;
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+.blocked-video-message p {
+    margin-bottom: 20px;
+    font-size: 16px;
+    line-height: 1.4;
+}
+
+.blocked-video-actions {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.view-downloads-btn {
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    border: none;
+    font-weight: bold;
+    background-color: #4caf50;
+    color: white;
+}
+
+/* Video container and custom controls */
+.video-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.custom-video-controls {
+    position: absolute;
+    bottom: 70px;
+    right: 10px;
+    z-index: 5;
+    display: flex;
+    gap: 10px;
+}
+
+.loop-button {
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.loop-button:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.loop-button.active {
+    background-color: #3ea6ff;
+}
+
+.loop-icon {
+    font-size: 20px;
+}
+
+.video-loading {
+    width: 100%;
+    height: 70vh;
+    background-color: #202124;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 18px;
+}
+
+/* Responsive styles for video page */
+@media (max-width: 1200px) {
+    .container2_videoPage {
+        margin: 1rem 2rem;
+    }
+
+    .video_display_screen_videoPage {
+        width: 65%;
+    }
+
+    .moreVideoBar_videoPage {
+        width: 35%;
+    }
+}
+
+@media (max-width: 992px) {
+    .container2_videoPage {
+        margin: 0.5rem 1rem;
+        flex-direction: column;
+    }
+
+    .video_display_screen_videoPage {
+        width: 100%;
+        padding: 0.5rem;
+    }
+
+    .video_ShowVideo_videoPage {
+        height: 60vh;
+    }
+
+    .moreVideoBar_videoPage {
+        width: 100%;
+        margin-top: 1rem;
+    }
+
+    .video_title_VideoPage {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .container2_videoPage {
+        margin: 0.5rem;
+    }
+
+    .video_ShowVideo_videoPage {
+        height: 50vh;
+    }
+
+    .video_btns_cont_videoPage {
+        flex-wrap: wrap;
+    }
+
+    .like_videoPage, .dislike_videoPage {
+        margin-bottom: 0.5rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .video_ShowVideo_videoPage {
+        height: 40vh;
+    }
+
+    .video_title_VideoPage {
+        font-size: 1rem;
+    }
+
+    .channel_details_videoPage {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .channel_name_videoPage {
+        margin-bottom: 0.5rem;
+    }
+
+    .channel_logo_videoPage {
+        margin-right: 0.5rem;
+    }
+
+    .video_btns_cont_videoPage {
+        justify-content: space-around;
+    }
+
+    .like_videoPage, .dislike_videoPage, .save_videoPage, .Add_toPlaylist_videoPage {
+        margin: 0.2rem;
+        font-size: 0.8rem;
+    }
+}

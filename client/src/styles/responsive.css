@@ -1,0 +1,236 @@
+/* Global Responsive CSS Framework */
+
+/* Breakpoints:
+ * - Extra small devices (phones, 576px and down)
+ * - Small devices (tablets, 576px to 768px)
+ * - Medium devices (tablets/small laptops, 768px to 992px)
+ * - Large devices (desktops, 992px to 1200px)
+ * - Extra large devices (large desktops, 1200px and up)
+ */
+
+/* Common responsive classes */
+.hide-on-mobile {
+  display: initial;
+}
+
+.show-on-mobile {
+  display: none;
+}
+
+.hide-on-tablet {
+  display: initial;
+}
+
+.show-on-tablet {
+  display: none;
+}
+
+/* Flex utilities */
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Responsive containers */
+.container-fluid {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.container {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+/* Extra small devices (phones, 576px and down) */
+@media (max-width: 576px) {
+  .hide-on-mobile {
+    display: none !important;
+  }
+
+  .show-on-mobile {
+    display: initial !important;
+  }
+
+  /* Font size adjustments for mobile */
+  h1 {
+    font-size: 1.5rem !important;
+  }
+
+  h2 {
+    font-size: 1.3rem !important;
+  }
+
+  h3 {
+    font-size: 1.1rem !important;
+  }
+
+  /* Button adjustments for mobile */
+  button, .btn {
+    padding: 0.5rem 0.75rem !important;
+    font-size: 0.9rem !important;
+  }
+
+  /* Convert flex-row to flex-column on mobile */
+  .flex-row-to-column-mobile {
+    flex-direction: column !important;
+  }
+
+  /* Full width on mobile */
+  .full-width-mobile {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* Center on mobile */
+  .center-on-mobile {
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+}
+
+/* Small devices (tablets, 576px to 768px) */
+@media (min-width: 577px) and (max-width: 768px) {
+  .hide-on-tablet {
+    display: none !important;
+  }
+
+  .show-on-tablet {
+    display: initial !important;
+  }
+
+  /* Font size adjustments for small tablets */
+  h1 {
+    font-size: 1.7rem !important;
+  }
+
+  h2 {
+    font-size: 1.5rem !important;
+  }
+
+  h3 {
+    font-size: 1.3rem !important;
+  }
+
+  /* Adjust container width for tablets */
+  .container {
+    max-width: 540px;
+  }
+
+  /* Convert flex-row to flex-column on tablet if needed */
+  .flex-row-to-column-tablet {
+    flex-direction: column !important;
+  }
+
+  /* Adjust padding and margins for tablets */
+  .tablet-padding {
+    padding: 0.75rem !important;
+  }
+
+  .tablet-margin {
+    margin: 0.75rem !important;
+  }
+}
+
+/* Medium devices (tablets/small laptops, 768px to 992px) */
+@media (min-width: 769px) and (max-width: 992px) {
+  /* Adjustments for larger tablets */
+  .container {
+    max-width: 720px;
+  }
+
+  /* Adjust font sizes for medium devices */
+  h1 {
+    font-size: 1.9rem !important;
+  }
+
+  h2 {
+    font-size: 1.7rem !important;
+  }
+
+  /* Adjust spacing for medium devices */
+  .md-padding {
+    padding: 1rem !important;
+  }
+
+  .md-margin {
+    margin: 1rem !important;
+  }
+}
+
+/* Large devices (desktops, 992px to 1200px) */
+@media (min-width: 993px) and (max-width: 1200px) {
+  /* Adjustments for desktops */
+  .container {
+    max-width: 960px;
+  }
+
+  /* Adjust font sizes for large devices */
+  h1 {
+    font-size: 2.1rem !important;
+  }
+
+  h2 {
+    font-size: 1.9rem !important;
+  }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1201px) {
+  /* Adjustments for large desktops */
+  .container {
+    max-width: 1140px;
+  }
+}
+
+/* Orientation-specific styles */
+@media (orientation: portrait) {
+  /* Styles for portrait orientation */
+  .video-container {
+    height: auto !important;
+    width: 100% !important;
+  }
+
+  .video-controls {
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+  }
+}
+
+@media (orientation: landscape) and (max-width: 768px) {
+  /* Styles for landscape orientation on mobile/tablet */
+  .mobile-menu {
+    display: none !important; /* Hide mobile menu in landscape on small devices */
+  }
+
+  .video-container {
+    height: 80vh !important;
+    width: auto !important;
+  }
+
+  /* Optimize video call UI for landscape */
+  .video-grid {
+    flex-direction: row !important;
+    height: calc(100vh - 60px) !important;
+  }
+
+  .video-controls {
+    position: absolute !important;
+    bottom: 0 !important;
+    width: 100% !important;
+    background-color: rgba(0, 0, 0, 0.5) !important;
+  }
+}

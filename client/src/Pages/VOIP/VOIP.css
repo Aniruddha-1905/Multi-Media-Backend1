@@ -1,0 +1,534 @@
+.voip-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 80vh;
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.voip-header {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.voip-header h2 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.call-status {
+  font-size: 1rem;
+  color: #666;
+  padding: 0.5rem;
+  border-radius: 20px;
+  background-color: #e9ecef;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+}
+
+.connection-indicator {
+  font-size: 0.8rem;
+  padding: 3px 8px;
+  border-radius: 10px;
+  margin-left: 8px;
+}
+
+.connection-indicator.connected {
+  background-color: #28a745;
+  color: white;
+}
+
+.connection-indicator.disconnected {
+  background-color: #dc3545;
+  color: white;
+}
+
+.recording-indicator {
+  display: flex;
+  align-items: center;
+  background-color: #dc3545;
+  color: white;
+  padding: 3px 8px;
+  border-radius: 10px;
+  margin-left: 8px;
+  font-size: 0.8rem;
+  animation: blink 1s infinite;
+}
+
+.recording-dot {
+  width: 8px;
+  height: 8px;
+  background-color: white;
+  border-radius: 50%;
+  margin-right: 5px;
+  display: inline-block;
+}
+
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
+
+.participants-container {
+  width: 100%;
+  flex-grow: 1;
+  overflow-y: auto;
+  margin-bottom: 2rem;
+}
+
+.participants-container h3 {
+  margin-bottom: 1rem;
+  color: #495057;
+}
+
+.participants-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.participant {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.participant-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #007bff;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  margin-right: 1rem;
+}
+
+.participant-name {
+  font-size: 1rem;
+  color: #212529;
+}
+
+.voip-controls {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  width: 100%;
+  padding: 1rem 0;
+}
+
+.control-button {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 30px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 120px;
+}
+
+.control-button:hover {
+  transform: translateY(-2px);
+}
+
+.control-button.muted {
+  background-color: #dc3545;
+  color: white;
+}
+
+.control-button:not(.muted):not(.end-call):not(.refresh):not(.video-on):not(.video-off):not(.screen-on):not(.screen-off) {
+  background-color: #007bff;
+  color: white;
+}
+
+.control-button.refresh {
+  background-color: #28a745;
+  color: white;
+}
+
+.control-button.end-call {
+  background-color: #dc3545;
+  color: white;
+}
+
+.control-button.video-on {
+  background-color: #17a2b8;
+  color: white;
+}
+
+.control-button.video-off {
+  background-color: #6c757d;
+  color: white;
+}
+
+.control-button.screen-on {
+  background-color: #fd7e14;
+  color: white;
+}
+
+.control-button.screen-off {
+  background-color: #6c757d;
+  color: white;
+}
+
+.control-button.record {
+  background-color: #6c757d;
+  color: white;
+}
+
+.control-button.recording {
+  background-color: #dc3545;
+  color: white;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(220, 53, 69, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(220, 53, 69, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(220, 53, 69, 0);
+  }
+}
+
+/* Debug info */
+.debug-info {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background-color: #f0f0f0;
+  border-radius: 8px;
+  width: 100%;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.debug-info h4 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  color: #333;
+  font-size: 0.9rem;
+}
+
+.debug-messages {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.debug-message {
+  font-family: monospace;
+  font-size: 0.8rem;
+  padding: 0.25rem;
+  background-color: #e0e0e0;
+  border-radius: 4px;
+}
+
+/* Video container styles */
+.video-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  width: 100%;
+  margin-bottom: 1.5rem;
+  justify-content: center;
+}
+
+.video-wrapper {
+  position: relative;
+  width: 320px;
+  height: 240px;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #2c2c2c;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  margin: 10px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.video-wrapper:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.video-wrapper::after {
+  content: 'Double-click for fullscreen';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.video-wrapper:hover::after {
+  opacity: 1;
+}
+
+.local-video-wrapper {
+  z-index: 1;
+}
+
+.screen-share-wrapper {
+  z-index: 2;
+}
+
+/* Fullscreen styles */
+.video-wrapper:fullscreen,
+.video-wrapper:-webkit-full-screen,
+.video-wrapper:-ms-fullscreen {
+  width: 100%;
+  height: 100%;
+  border-radius: 0;
+  margin: 0;
+}
+
+.video-wrapper:fullscreen video,
+.video-wrapper:-webkit-full-screen video,
+.video-wrapper:-ms-fullscreen video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.video-wrapper:fullscreen .video-label,
+.video-wrapper:-webkit-full-screen .video-label,
+.video-wrapper:-ms-fullscreen .video-label {
+  font-size: 18px;
+  padding: 10px;
+}
+
+.local-video, .screen-share {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background-color: #000;
+}
+
+.remote-video-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #2c2c2c;
+}
+
+.participant-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: #007bff;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.video-label {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 0.5rem;
+  font-size: 0.9rem;
+  text-align: center;
+  z-index: 10;
+  transition: all 0.3s ease;
+}
+
+.remote-videos-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  width: 100%;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  .voip-container {
+    padding: 1rem;
+    height: 90vh;
+    max-width: 100%;
+  }
+
+  .voip-header h2 {
+    font-size: 1.5rem;
+  }
+
+  .call-status {
+    font-size: 0.9rem;
+  }
+
+  .video-wrapper {
+    width: 280px;
+    height: 210px;
+  }
+
+  .participant-avatar {
+    width: 60px;
+    height: 60px;
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .voip-container {
+    padding: 0.75rem;
+    height: 100vh;
+    margin: 0;
+    border-radius: 0;
+  }
+
+  .voip-controls {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 0;
+  }
+
+  .control-button {
+    width: 100%;
+    max-width: 200px;
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+    min-width: auto;
+  }
+
+  .debug-info {
+    max-height: 120px;
+    margin-top: 1rem;
+  }
+
+  .video-wrapper {
+    width: 100%;
+    max-width: 320px;
+    height: 180px;
+    margin: 5px;
+  }
+
+  .video-container {
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .participants-container {
+    margin-bottom: 1rem;
+  }
+
+  .participants-list {
+    gap: 0.5rem;
+  }
+
+  .participant {
+    padding: 0.75rem;
+  }
+
+  .video-label {
+    font-size: 0.8rem;
+    padding: 0.3rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .voip-container {
+    padding: 0.5rem;
+  }
+
+  .voip-header h2 {
+    font-size: 1.3rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .call-status {
+    font-size: 0.8rem;
+    padding: 0.3rem;
+  }
+
+  .connection-indicator {
+    font-size: 0.7rem;
+    padding: 2px 6px;
+  }
+
+  .control-button {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.8rem;
+    max-width: 150px;
+  }
+
+  .video-wrapper {
+    height: 150px;
+  }
+
+  .video-wrapper::after {
+    font-size: 10px;
+    padding: 3px 6px;
+  }
+
+  /* Improve fullscreen handling */
+  .fullscreen-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw !important;
+    height: 100vh !important;
+    z-index: 9999;
+    background: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .fullscreen-video video {
+    max-width: 100%;
+    max-height: 100%;
+  }
+
+  .participant-avatar {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
+
+  /* Stack controls in two rows for very small screens */
+  .voip-controls {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+  }
+
+  .control-button.end-call {
+    grid-column: span 2;
+  }
+}

@@ -1,0 +1,29 @@
+:root {
+    /* Light theme variables */
+    --light-bg: #ffffff;
+    --light-text: #333333;
+    --light-primary: #1a73e8;
+    --light-secondary: #f1f3f4;
+
+    /* Dark theme variables */
+    --dark-bg: #202124;
+    --dark-text: #ffffff;
+    --dark-primary: #8ab4f8;
+    --dark-secondary: #303134;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.light-theme {
+    background-color: var(--light-bg);
+    color: var(--light-text);
+}
+
+body.dark-theme {
+    background-color: var(--dark-bg);
+    color: var(--dark-text);
+}
