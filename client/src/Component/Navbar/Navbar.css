@@ -8,6 +8,11 @@
     position: relative;
     z-index: 100;
 }
+
+.white-theme .Container_Navbar {
+    background-color: #ffffff;
+    border-color: #e0e0e0;
+}
 .Burger_Logo_Navbar{
     display: flex;
     height: 3.3rem;
@@ -30,6 +35,10 @@
     height: 0.1rem;
     background-color: rgb(255, 244, 244);
 }
+
+.white-theme .burger p {
+    background-color: #000000;
+}
 .logo_div_Navbar{
     display: flex;
     text-decoration: none;
@@ -38,6 +47,10 @@
     margin: auto;
     color: white;
     font-weight: bold;
+}
+
+.white-theme .logo_title_navbar {
+    color: #000000;
 }
 .apps_Box{
     width: 25px;
@@ -53,6 +66,10 @@
     margin: 0.1rem;
     width: 2px;
     height: 2px;
+}
+
+.white-theme .appBox {
+    border-color: #000000;
 }
 .Auth_cont_Navbar{
     width: fit-content;
@@ -70,6 +87,12 @@
     border-radius: 0.1rem;
 }
 
+.white-theme .Auth_Btn {
+    color: #1a73e8;
+    background-color: #ffffff;
+    border-color: #1a73e8;
+}
+
 /* Navbar styles */
 .navbar {
     display: flex;
@@ -82,6 +105,10 @@
     text-decoration: none;
     margin-right: 20px;
     font-weight: 500;
+}
+
+.white-theme .nav-link {
+    color: #000000;
 }
 
 .nav-link:hover {
@@ -98,16 +125,40 @@
     height: 40px;
 }
 
+.white-theme .video-call-btn {
+    color: #000000;
+    font-weight: bold;
+    background-color: rgba(0, 0, 0, 0.05);
+    padding: 5px 10px;
+    border-radius: 4px;
+}
+
 .group-icon, .chat-btn {
     color: white;
     font-size: 20px;
     margin-right: 5px;
 }
 
+.white-theme .group-icon, .white-theme .chat-btn {
+    color: #000000;
+}
+
+.white-theme .group-icon, .white-theme .chat-btn {
+    color: #000000;
+}
+
 .group-text {
     color: white;
     font-size: 14px;
     font-weight: 500;
+}
+
+.white-theme .group-text {
+    color: #000000;
+}
+
+.white-theme .group-text {
+    color: #000000;
 }
 
 .group-icon:hover, .chat-btn:hover, .groups-icon:hover .group-icon, .groups-icon:hover .group-text {
@@ -127,6 +178,12 @@
     padding: 10px;
 }
 
+.white-theme .groups-list, .white-theme .chat-dropdown {
+    background-color: #ffffff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e0e0e0;
+}
+
 .groups-header, .chat-header {
     display: flex;
     justify-content: space-between;
@@ -136,10 +193,18 @@
     margin-bottom: 10px;
 }
 
+.white-theme .groups-header, .white-theme .chat-header {
+    border-bottom: 1px solid #e0e0e0;
+}
+
 .groups-header h3, .chat-header h3 {
     color: white;
     margin: 0;
     font-size: 16px;
+}
+
+.white-theme .groups-header h3, .white-theme .chat-header h3 {
+    color: #000000;
 }
 
 .group-actions {
@@ -333,6 +398,10 @@
     font-size: 14px;
 }
 
+.white-theme .search-result-name {
+    color: #000000;
+}
+
 .search-result-desc {
     color: #aaa;
     font-size: 12px;
@@ -340,6 +409,10 @@
     overflow: hidden;
     text-overflow: ellipsis;
     max-width: 150px;
+}
+
+.white-theme .search-result-desc {
+    color: #666;
 }
 
 .search-result-members {
@@ -412,8 +485,16 @@
     border-radius: 3px;
 }
 
+.white-theme .group-item {
+    color: #000000;
+}
+
 .group-item:hover {
     background-color: #3f3f3f;
+}
+
+.white-theme .group-item:hover {
+    background-color: #f1f3f4;
 }
 
 .group-item-icon {
@@ -422,11 +503,19 @@
     color: #3ea6ff;
 }
 
+.white-theme .group-item-icon {
+    color: #1a73e8;
+}
+
 .no-groups, .no-messages {
     color: #aaa;
     text-align: center;
     padding: 15px 0;
     font-size: 14px;
+}
+
+.white-theme .no-groups, .white-theme .no-messages {
+    color: #666;
 }
 
 /* Responsive adjustments */

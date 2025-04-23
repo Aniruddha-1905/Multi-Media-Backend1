@@ -6,6 +6,11 @@
     color: var(--dark-text);
 }
 
+.white-theme .subscription-container {
+    background-color: var(--white-bg);
+    color: var(--white-text);
+}
+
 .subscription-content {
     flex: 1;
     padding: 20px;
@@ -19,6 +24,10 @@
     color: var(--dark-primary);
 }
 
+.white-theme .subscription-content h1 {
+    color: var(--white-primary);
+}
+
 .current-subscription {
     background-color: var(--dark-secondary);
     border-radius: 8px;
@@ -27,10 +36,20 @@
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
+.white-theme .current-subscription {
+    background-color: var(--white-secondary);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
 .current-subscription h2 {
     font-size: 22px;
     margin-bottom: 15px;
     color: var(--dark-primary);
+}
+
+.white-theme .current-subscription h2 {
+    color: var(--white-primary);
 }
 
 .subscription-details {
@@ -49,6 +68,10 @@
     font-weight: bold;
     width: 150px;
     color: #aaa;
+}
+
+.white-theme .detail-label {
+    color: #666;
 }
 
 .detail-value {
@@ -93,6 +116,11 @@
     overflow: hidden;
 }
 
+.white-theme .plan-card {
+    background-color: var(--white-secondary);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
 .plan-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
@@ -100,6 +128,10 @@
 
 .current-plan {
     border: 2px solid var(--dark-primary);
+}
+
+.white-theme .current-plan {
+    border: 2px solid var(--white-primary);
 }
 
 .plan-header {
@@ -121,6 +153,11 @@
     padding: 4px 8px;
     border-radius: 4px;
     font-weight: bold;
+}
+
+.white-theme .current-badge {
+    background-color: var(--white-primary);
+    color: white;
 }
 
 .plan-price {
@@ -165,6 +202,10 @@
     margin-bottom: 2px;
 }
 
+.white-theme .feature-label {
+    color: #666;
+}
+
 .feature-value {
     font-size: 15px;
 }
@@ -179,6 +220,11 @@
     font-size: 16px;
     font-weight: bold;
     transition: background-color 0.3s;
+}
+
+.white-theme .select-plan-btn {
+    background-color: var(--white-primary);
+    color: white;
 }
 
 .select-plan-btn:hover {
@@ -209,6 +255,12 @@
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
+.white-theme .payment-modal {
+    background-color: var(--white-secondary);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
 .close-modal-btn {
     position: absolute;
     top: 15px;
@@ -220,10 +272,18 @@
     cursor: pointer;
 }
 
+.white-theme .close-modal-btn {
+    color: #666;
+}
+
 .payment-modal h2 {
     font-size: 24px;
     margin-bottom: 20px;
     color: var(--dark-primary);
+}
+
+.white-theme .payment-modal h2 {
+    color: var(--white-primary);
 }
 
 .payment-error {
@@ -288,6 +348,12 @@
     color: white;
 }
 
+.white-theme .form-group input {
+    border: 1px solid #ddd;
+    background-color: #fff;
+    color: #333;
+}
+
 .process-payment-btn {
     background-color: var(--dark-primary);
     color: var(--dark-bg);
@@ -299,6 +365,11 @@
     font-weight: bold;
     width: 100%;
     transition: background-color 0.3s;
+}
+
+.white-theme .process-payment-btn {
+    background-color: var(--white-primary);
+    color: white;
 }
 
 .process-payment-btn:hover {

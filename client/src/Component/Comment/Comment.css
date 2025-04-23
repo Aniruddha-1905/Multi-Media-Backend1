@@ -13,6 +13,11 @@
   border-bottom: 2px solid grey;
 }
 
+.white-theme .comment_ibox {
+  color: #000000;
+  border-bottom: 2px solid #cccccc;
+}
+
 .comment_add_btn_comments {
   cursor: pointer;
   border: 2px solid transparent;
@@ -23,10 +28,21 @@
   width: 20%;
 }
 
+.white-theme .comment_add_btn_comments {
+  color: #000000;
+  border-bottom: 2px solid #cccccc;
+}
+
 .comment_add_btn_comments:hover {
   border: 2px solid rgba(64, 64, 64, 0.05);
   border-bottom: 2px solid rgb(64, 64, 64);
   background-color: rgba(240, 248, 255, 0.05);
+}
+
+.white-theme .comment_add_btn_comments:hover {
+  border: 2px solid rgba(0, 0, 0, 0.05);
+  border-bottom: 2px solid #cccccc;
+  background-color: rgba(0, 0, 0, 0.05);
 }
 
 .display_comment_container {
@@ -43,8 +59,17 @@
   transition: background-color 0.2s ease;
 }
 
+.white-theme .comment-container {
+  background-color: rgba(0, 0, 0, 0.03);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
 .comment-container:hover {
   background-color: rgba(0, 0, 0, 0.2);
+}
+
+.white-theme .comment-container:hover {
+  background-color: rgba(0, 0, 0, 0.05);
 }
 
 .comment_body {
@@ -55,11 +80,19 @@
   line-height: 1.5;
 }
 
+.white-theme .comment_body {
+  color: #333333;
+}
+
 .usercommented {
   color: rgb(120, 120, 120);
   margin: 0.5rem 0;
   font-size: 0.9rem;
   line-height: 1.4;
+}
+
+.white-theme .usercommented {
+  color: #666666;
 }
 
 .user-location {
@@ -70,12 +103,20 @@
   font-size: 0.9rem;
 }
 
+.white-theme .user-location {
+  color: #777777;
+}
+
 .comment-time {
   display: block;
   color: rgb(150, 150, 150);
   font-size: 0.85rem;
   margin-top: 0.2rem;
   font-weight: 500;
+}
+
+.white-theme .comment-time {
+  color: #666666;
 }
 
 .comment-actions {
@@ -104,9 +145,20 @@
   transition: all 0.2s ease;
 }
 
+.white-theme .reaction-btn {
+  color: #666666;
+  border: 1px solid transparent;
+}
+
 .like-btn:hover {
   background-color: rgba(0, 128, 0, 0.1);
   color: rgb(0, 180, 0);
+}
+
+.white-theme .like-btn:hover {
+  background-color: rgba(0, 128, 0, 0.1);
+  color: rgb(0, 150, 0);
+  border: 1px solid rgba(0, 128, 0, 0.2);
 }
 
 .dislike-btn:hover {
@@ -114,8 +166,18 @@
   color: rgb(180, 0, 0);
 }
 
+.white-theme .dislike-btn:hover {
+  background-color: rgba(128, 0, 0, 0.1);
+  color: rgb(150, 0, 0);
+  border: 1px solid rgba(128, 0, 0, 0.2);
+}
+
 .reaction-count {
   font-weight: bold;
+}
+
+.white-theme .reaction-count {
+  color: #333333;
 }
 
 .user-actions {
@@ -139,6 +201,12 @@
   color: rgb(200, 200, 200);
 }
 
+.white-theme .language-dropdown {
+  border: 1px solid #666666;
+  background-color: #f1f1f1;
+  color: #333333;
+}
+
 .action-btn {
   display: flex;
   align-items: center;
@@ -152,32 +220,72 @@
   transition: background-color 0.2s ease;
 }
 
+.white-theme .action-btn {
+  background-color: #e0e0e0;
+  color: #333333;
+  border: 1px solid #cccccc;
+}
+
 .action-btn:hover {
   background-color: rgba(0, 0, 0, 0.4);
+}
+
+.white-theme .action-btn:hover {
+  background-color: #cccccc;
 }
 
 .translate-btn {
   background-color: rgba(0, 0, 128, 0.2);
 }
 
+.white-theme .translate-btn {
+  background-color: rgba(0, 0, 255, 0.1);
+  color: #0000cc;
+  border: 1px solid rgba(0, 0, 255, 0.2);
+}
+
 .translate-btn:hover {
   background-color: rgba(0, 0, 128, 0.4);
+}
+
+.white-theme .translate-btn:hover {
+  background-color: rgba(0, 0, 255, 0.2);
 }
 
 .edit-btn {
   background-color: rgba(0, 128, 128, 0.2);
 }
 
+.white-theme .edit-btn {
+  background-color: rgba(0, 128, 128, 0.1);
+  color: #008080;
+  border: 1px solid rgba(0, 128, 128, 0.2);
+}
+
 .edit-btn:hover {
   background-color: rgba(0, 128, 128, 0.4);
+}
+
+.white-theme .edit-btn:hover {
+  background-color: rgba(0, 128, 128, 0.2);
 }
 
 .delete-btn {
   background-color: rgba(128, 0, 0, 0.2);
 }
 
+.white-theme .delete-btn {
+  background-color: rgba(255, 0, 0, 0.1);
+  color: #cc0000;
+  border: 1px solid rgba(255, 0, 0, 0.2);
+}
+
 .delete-btn:hover {
   background-color: rgba(128, 0, 0, 0.4);
+}
+
+.white-theme .delete-btn:hover {
+  background-color: rgba(255, 0, 0, 0.2);
 }
 
 .edit-comment-form {
@@ -193,6 +301,10 @@
   align-items: center;
 }
 
+.white-theme .location-loading {
+  color: #777777;
+}
+
 .location-loading:before {
   content: "";
   display: inline-block;
@@ -203,6 +315,11 @@
   border-top-color: transparent;
   border-radius: 50%;
   animation: location-spinner 1s linear infinite;
+}
+
+.white-theme .location-loading:before {
+  border: 2px solid #777777;
+  border-top-color: transparent;
 }
 
 @keyframes location-spinner {

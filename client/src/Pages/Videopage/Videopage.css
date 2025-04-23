@@ -4,6 +4,11 @@
     background-color: rgb(11, 11, 11);
     color: white;
 }
+
+.white-theme .container_videoPage {
+    background-color: #ffffff;
+    color: #000000;
+}
 .container2_videoPage {
     margin: 1.5rem 4.5rem;
     display: flex;
@@ -66,6 +71,10 @@
     border-bottom: 3px solid rgba(245, 222, 179, 0.175);
     flex-grow: 1;
 }
+
+.white-theme .video_btns_title_VideoPage_cont {
+    border-bottom: 3px solid rgba(0, 0, 0, 0.1);
+}
 .video_title_VideoPage {
     font-size: x-large;
     margin: 0;
@@ -91,12 +100,21 @@
     font-size: 0.9rem;
 }
 
+.white-theme .video-timestamp {
+    color: rgba(0, 0, 0, 0.7);
+}
+
 .chanel_details_videoPage {
     border-bottom: 3px solid rgba(245, 222, 179, 0.175);
     display: flex;
     text-decoration: none;
     color: aliceblue;
     font-weight: bolder;
+}
+
+.white-theme .chanel_details_videoPage {
+    border-bottom: 3px solid rgba(0, 0, 0, 0.1);
+    color: #000000;
 }
 .chanel_logo_videoPage {
     display: flex;
@@ -158,16 +176,29 @@
     text-align: center;
 }
 
+.white-theme .time-warning-message {
+    background-color: #ffffff;
+    border: 2px solid #1a73e8;
+}
+
 .time-warning-message h3 {
     color: #3ea6ff;
     margin-bottom: 10px;
     font-size: 20px;
 }
 
+.white-theme .time-warning-message h3 {
+    color: #1a73e8;
+}
+
 .time-warning-message p {
     margin-bottom: 20px;
     font-size: 16px;
     line-height: 1.4;
+}
+
+.white-theme .time-warning-message p {
+    color: #000000;
 }
 
 .time-warning-actions {
@@ -190,9 +221,19 @@
     color: #202124;
 }
 
+.white-theme .upgrade-btn {
+    background-color: #1a73e8;
+    color: white;
+}
+
 .dismiss-btn {
     background-color: #444;
     color: white;
+}
+
+.white-theme .dismiss-btn {
+    background-color: #e0e0e0;
+    color: #202124;
 }
 
 .time-remaining {
@@ -219,6 +260,12 @@
     font-weight: bold;
     z-index: 5;
     font-family: monospace;
+}
+
+.white-theme .time-remaining-clock {
+    background-color: rgba(0, 0, 0, 0.1);
+    color: #000000;
+    border: 1px solid rgba(0, 0, 0, 0.2);
 }
 
 .downloaded-video-badge {
@@ -256,6 +303,11 @@
     text-align: center;
 }
 
+.white-theme .blocked-video-message {
+    background-color: #ffffff;
+    border: 2px solid #ff3d00;
+}
+
 .blocked-video-message h3 {
     color: #ff3d00;
     margin-bottom: 10px;
@@ -266,6 +318,10 @@
     margin-bottom: 20px;
     font-size: 16px;
     line-height: 1.4;
+}
+
+.white-theme .blocked-video-message p {
+    color: #000000;
 }
 
 .blocked-video-actions {
@@ -281,6 +337,11 @@
     cursor: pointer;
     border: none;
     font-weight: bold;
+    background-color: #4caf50;
+    color: white;
+}
+
+.white-theme .view-downloads-btn {
     background-color: #4caf50;
     color: white;
 }
@@ -315,12 +376,25 @@
     transition: background-color 0.3s;
 }
 
+.white-theme .loop-button {
+    background-color: rgba(0, 0, 0, 0.1);
+    color: #000000;
+}
+
 .loop-button:hover {
     background-color: rgba(0, 0, 0, 0.8);
 }
 
+.white-theme .loop-button:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
 .loop-button.active {
     background-color: #3ea6ff;
+}
+
+.white-theme .loop-button.active {
+    background-color: #1a73e8;
 }
 
 .loop-icon {
@@ -336,6 +410,11 @@
     align-items: center;
     color: white;
     font-size: 18px;
+}
+
+.white-theme .video-loading {
+    background-color: #f8f9fa;
+    color: #000000;
 }
 
 /* Responsive styles for video page */

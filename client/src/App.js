@@ -1,6 +1,6 @@
 // import logo from './logo.svg';
 import './App.css';
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import Navbar from './Component/Navbar/Navbar';
 import { useDispatch, useSelector } from 'react-redux';
 import Allroutes from "./Allroutes";
@@ -10,6 +10,7 @@ import Createeditchannel from './Pages/Channel/Createeditchannel';
 import Videoupload from './Pages/Videoupload/Videoupload';
 import MobileMenu from './Component/MobileMenu/MobileMenu';
 import { useClerk } from '@clerk/clerk-react';
+import { ThemeContext } from './context/ThemeContext';
 
 import { fetchallchannel } from './action/channeluser';
 import { getallvideo } from './action/video';
@@ -25,7 +26,16 @@ function App() {
   const [editcreatechanelbtn, seteditcreatechanelbtn] = useState(false);
   const [videouploadpage, setvideouploadpage] = useState(false);
 
+  // Get theme context
+  const { isWhiteTheme } = useContext(ThemeContext);
+
   const dispatch = useDispatch();
+
+  // Apply theme to body
+  useEffect(() => {
+    document.body.className = isWhiteTheme ? 'white-theme' : 'dark-theme';
+    console.log('Theme applied:', isWhiteTheme ? 'WHITE' : 'DARK');
+  }, [isWhiteTheme]);
 
   useEffect(() => {
     dispatch(fetchallchannel());
@@ -55,15 +65,17 @@ function App() {
 
   return (
     <Router>
-      {videouploadpage && <Videoupload setvideouploadpage={setvideouploadpage} />}
-      {editcreatechanelbtn && (
-        <Createeditchannel seteditcreatechanelbtn={seteditcreatechanelbtn} />
-      )}
+      <div className={`App ${isWhiteTheme ? 'white-theme' : 'dark-theme'}`}>
+        {videouploadpage && <Videoupload setvideouploadpage={setvideouploadpage} />}
+        {editcreatechanelbtn && (
+          <Createeditchannel seteditcreatechanelbtn={seteditcreatechanelbtn} />
+        )}
 
-      <Navbar seteditcreatechanelbtn={seteditcreatechanelbtn} toggledrawer={toggledrawer} />
-      <Drawersliderbar toggledraw={toggledrawer} toggledrawersidebar={toggledrawersidebar} />
-      <Allroutes seteditcreatechanelbtn={seteditcreatechanelbtn} setvideouploadpage={setvideouploadpage} />
-      <MobileMenu currentUser={currentUser} openSignIn={openSignIn} />
+        <Navbar seteditcreatechanelbtn={seteditcreatechanelbtn} toggledrawer={toggledrawer} />
+        <Drawersliderbar toggledraw={toggledrawer} toggledrawersidebar={toggledrawersidebar} />
+        <Allroutes seteditcreatechanelbtn={seteditcreatechanelbtn} setvideouploadpage={setvideouploadpage} />
+        <MobileMenu currentUser={currentUser} openSignIn={openSignIn} />
+      </div>
     </Router>
   );
 }

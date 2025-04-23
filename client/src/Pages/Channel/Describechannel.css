@@ -4,6 +4,11 @@
     color: whitesmoke;
     position: relative;
 }
+
+.white-theme .container3_chanel {
+    border-bottom: 3px solid rgba(0,0,0,0.1);
+    color: #000000;
+}
 .chanel_logo_chanel{
     border: 10px solid rgba(49,7,219,0.66);
     width: 5rem;
@@ -19,6 +24,10 @@
 }
 .description_chanel{
     text-align: center;
+}
+
+.white-theme .description_chanel {
+    color: #000000;
 }
 .description_chanel b{
     font-size: 4rem;
@@ -37,6 +46,12 @@
     color: white;
     transition: all 1s;
     cursor: pointer;
+}
+
+.white-theme .uploadbtn_chanel,
+.white-theme .editbtn_chanel {
+    background-color: #1a73e8;
+    color: white;
 }
 .uploadbtn_chanel{
     top: 4rem;

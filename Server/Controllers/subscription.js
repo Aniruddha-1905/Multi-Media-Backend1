@@ -14,9 +14,25 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // Create invoices directory if it doesn't exist
-const invoicesDir = path.join(__dirname, '..', 'invoices');
-if (!fs.existsSync(invoicesDir)) {
-    fs.mkdirSync(invoicesDir, { recursive: true });
+let invoicesDir;
+try {
+    invoicesDir = path.join(__dirname, '..', 'invoices');
+    if (!fs.existsSync(invoicesDir)) {
+        fs.mkdirSync(invoicesDir, { recursive: true });
+    }
+    console.log(`Invoices directory set to: ${invoicesDir}`);
+} catch (error) {
+    console.error('Error creating invoices directory:', error);
+    // Fallback to a temporary directory if needed
+    invoicesDir = path.join(process.cwd(), 'tmp');
+    try {
+        if (!fs.existsSync(invoicesDir)) {
+            fs.mkdirSync(invoicesDir, { recursive: true });
+        }
+        console.log(`Fallback invoices directory set to: ${invoicesDir}`);
+    } catch (fallbackError) {
+        console.error('Error creating fallback directory:', fallbackError);
+    }
 }
 
 // Email configuration is handled in the sendInvoiceEmail function
@@ -24,6 +40,12 @@ if (!fs.existsSync(invoicesDir)) {
 // Function to save invoice to file
 const saveInvoiceToFile = (userEmail, invoiceId, invoiceContent) => {
     try {
+        // Skip file saving in production environment (Render has ephemeral filesystem)
+        if (process.env.NODE_ENV === 'production') {
+            console.log(`Skipping invoice file save in production for user ${userEmail}`);
+            return 'invoice-not-saved-in-production';
+        }
+
         const invoicePath = path.join(invoicesDir, `invoice_${invoiceId}.html`);
         fs.writeFileSync(invoicePath, invoiceContent);
         console.log(`Invoice saved to ${invoicePath} for user ${userEmail}`);
@@ -39,19 +61,25 @@ const sendInvoiceEmail = async (userEmail, invoiceId, invoiceContent, planName) 
     try {
         console.log(`Sending email to ${userEmail} with invoice ID: ${invoiceId}`);
         console.log(`Using Gmail account: ${process.env.EMAIL_USER}`);
-        console.log(`App Password length: ${process.env.APP_PASSWORD.length} characters`);
-        console.log(`App Password: ${process.env.APP_PASSWORD}`);
+
+        // Don't log the password, even partially - security risk
+        if (!process.env.APP_PASSWORD) {
+            console.error('APP_PASSWORD environment variable is not set!');
+            return false;
+        }
+
+        console.log('APP_PASSWORD is set and will be used for authentication');
 
         // Create Gmail transporter with explicit configuration
         const transporter = nodemailer.createTransport({
-            host: 'smtp.gmail.com',
-            port: 587,
-            secure: false, // true for 465, false for other ports
+            service: 'gmail',  // Use the service name instead of host/port
             auth: {
                 user: process.env.EMAIL_USER,
                 pass: process.env.APP_PASSWORD
             },
-            debug: true
+            tls: {
+                rejectUnauthorized: false  // Helps with some deployment environments
+            }
         });
 
         const fromName = process.env.EMAIL_FROM_NAME || 'Video Stream Platform';
@@ -74,10 +102,10 @@ const sendInvoiceEmail = async (userEmail, invoiceId, invoiceContent, planName) 
         console.error('- Message:', error.message);
         console.error('- Code:', error.code);
 
-        // Log the error but don't fall back to test email
+        // Log the error but don't expose sensitive information
         console.log('Failed to send email. Please check your Gmail credentials and settings.');
         console.log(`EMAIL_USER: ${process.env.EMAIL_USER}`);
-        console.log(`APP_PASSWORD: ${process.env.APP_PASSWORD ? 'Set' : 'Not set'}`);
+        console.log(`APP_PASSWORD: ${process.env.APP_PASSWORD ? 'Is set (length: ' + process.env.APP_PASSWORD.length + ')' : 'Not set'}`);
         return false;
     }
 };
@@ -335,17 +363,33 @@ export const subscribeToPlan = async (req, res) => {
         }
 
         // Send invoice email with improved error handling
-        try {
-            // Use the existing sendInvoiceEmail function which has detailed logging
-            const emailSent = await sendInvoiceEmail(user.email, invoiceId, invoiceHtml, planName);
+        let emailSent = false;
+        let emailError = null;
 
-            if (emailSent) {
-                console.log(`\u2713 Invoice email successfully sent to ${user.email}`);
-            } else {
-                console.warn(`Invoice generated but email could not be sent to ${user.email}`);
+        try {
+            // Make multiple attempts to send the email if needed
+            for (let attempt = 1; attempt <= 3; attempt++) {
+                console.log(`Attempt ${attempt} to send email to ${user.email}`);
+
+                // Use the existing sendInvoiceEmail function which has detailed logging
+                emailSent = await sendInvoiceEmail(user.email, invoiceId, invoiceHtml, planName);
+
+                if (emailSent) {
+                    console.log(`\u2713 Invoice email successfully sent to ${user.email} on attempt ${attempt}`);
+                    break; // Exit the loop if email was sent successfully
+                } else {
+                    console.warn(`Failed to send email on attempt ${attempt}`);
+                    // Wait a bit before retrying
+                    if (attempt < 3) await new Promise(resolve => setTimeout(resolve, 1000));
+                }
             }
-        } catch (emailError) {
-            console.error('Error sending invoice email:', emailError);
+
+            if (!emailSent) {
+                console.warn(`All attempts failed. Invoice generated but email could not be sent to ${user.email}`);
+            }
+        } catch (error) {
+            emailError = error;
+            console.error('Error sending invoice email:', error);
             console.log('Continuing with subscription process despite email error');
         }
 
@@ -357,6 +401,8 @@ export const subscribeToPlan = async (req, res) => {
             subscriptionExpiry,
             watchTimeLimitReached: user.watchTimeLimitReached,
             watchTimeLimitReachedAt: user.watchTimeLimitReachedAt,
+            emailSent,
+            emailError: emailError ? emailError.message : null,
             invoice: {
                 id: invoiceId,
                 email: user.email,

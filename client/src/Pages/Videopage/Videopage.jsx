@@ -35,6 +35,8 @@ const Videopage = () => {
   const dispatch = useDispatch();
   const videoRef = useRef(null);
   const commentRef = useRef(null);
+  // State for tracking taps on video - used in handleVideoClick function
+  // eslint-disable-next-line no-unused-vars
   const [taps, setTaps] = useState([]);
   const timeoutRef = useRef(null);
 
@@ -63,10 +65,10 @@ const Videopage = () => {
   const [isDownloadedVideo, setIsDownloadedVideo] = useState(false);
   const [isBlocked, setIsBlocked] = useState(false);
   const [blockTimeRemaining, setBlockTimeRemaining] = useState(0);
-  const [isLooping, setIsLooping] = useState(false);
+  // Loop functionality removed
   const [timerIntervalId, setTimerIntervalId] = useState(null);
   const downloadedVideos = useSelector(state => state.downloadedvideoreducer);
-  const subscription = useSelector(state => state.subscription);
+  // Subscription data is now handled through the checkWatchTimeEligibility function
 
   const handleViews = () => {
     dispatch(viewvideo({ id: vid }));
@@ -82,12 +84,7 @@ const Videopage = () => {
   };
 
   const handleVideoCompletion = () => {
-    // If looping is enabled, restart the video
-    if (isLooping && videoRef.current) {
-      videoRef.current.currentTime = 0;
-      videoRef.current.play();
-      return;
-    }
+    // Loop functionality removed
 
     const pointsEarned = 5; // Points for completing the video
     const newPoints = updatedPoints + pointsEarned;
@@ -140,15 +137,7 @@ const Videopage = () => {
     }
   };
 
-  // Toggle loop mode for the video
-  const toggleLoopMode = () => {
-    if (videoRef.current) {
-      // Toggle loop attribute on the video element
-      videoRef.current.loop = !videoRef.current.loop;
-      setIsLooping(!isLooping);
-      console.log(`Loop mode ${!isLooping ? 'enabled' : 'disabled'}`);
-    }
-  };
+  // Loop functionality removed
 
   const scrollToComments = () => {
     if (commentRef.current) {
@@ -162,7 +151,7 @@ const Videopage = () => {
   const goToRandomVideo = async () => {
     try {
       // Fetch latest videos
-      await dispatch(getallvideo());
+      dispatch(getallvideo());
 
       // Get all videos except current one
       const otherVideos = vids?.data.filter(video => video._id !== vid);
@@ -344,39 +333,43 @@ const Videopage = () => {
       return;
     }
 
-    try {
-      const result = await dispatch(checkWatchTimeEligibility());
+    // Properly handle the Promise returned by dispatch
+    dispatch(checkWatchTimeEligibility())
+      .then(result => {
+        if (result.error) {
+          console.error('Error checking watch time eligibility:', result.error);
+          return;
+        }
 
-      if (result.error) {
-        console.error('Error checking watch time eligibility:', result.error);
-        return;
-      }
+        // Update state with subscription details
+        setWatchTimeLimit(result.watchTimeLimit);
+        setTimeRemainingSeconds(result.watchTimeLimit);
+        setIsUnlimited(result.isUnlimited);
+        setSubscriptionPlan(result.subscriptionPlan);
+        setIsBlocked(result.isBlocked);
+        setBlockTimeRemaining(result.blockTimeRemaining);
 
-      // Update state with subscription details
-      setWatchTimeLimit(result.watchTimeLimit);
-      setTimeRemainingSeconds(result.watchTimeLimit);
-      setIsUnlimited(result.isUnlimited);
-      setSubscriptionPlan(result.subscriptionPlan);
-      setIsBlocked(result.isBlocked);
-      setBlockTimeRemaining(result.blockTimeRemaining);
+        // Set initial formatted time
+        setFormattedTime(formatTime(result.watchTimeLimit));
 
-      console.log(`User subscription: ${result.subscriptionPlan}, Watch time limit: ${result.watchTimeLimit} seconds`);
-      console.log(`User is ${result.isBlocked ? 'blocked' : 'not blocked'} for video playback`);
+        console.log(`User subscription: ${result.subscriptionPlan}, Watch time limit: ${result.watchTimeLimit} seconds`);
+        console.log(`User is ${result.isBlocked ? 'blocked' : 'not blocked'} for video playback`);
 
-      // If user is blocked and this is not a downloaded video, show block message
-      // but don't automatically redirect - let the user decide what to do
-      if (result.isBlocked && !isDownloadedVideo) {
-        // Don't navigate away automatically - just show the block message
-        return;
-      }
+        // If user is blocked and this is not a downloaded video, show block message
+        // but don't automatically redirect - let the user decide what to do
+        if (result.isBlocked && !isDownloadedVideo) {
+          // Don't navigate away automatically - just show the block message
+          return;
+        }
 
-      // Start the countdown timer if not blocked and not unlimited
-      if (!result.isBlocked && !result.isUnlimited) {
-        startCountdownTimer();
-      }
-    } catch (error) {
-      console.error('Error checking watch time eligibility:', error);
-    }
+        // Start the countdown timer if not blocked and not unlimited
+        if (!result.isBlocked && !result.isUnlimited) {
+          startCountdownTimer();
+        }
+      })
+      .catch(error => {
+        console.error('Error checking watch time eligibility:', error);
+      });
   };
 
   // Handle time limit for video playback
@@ -443,28 +436,17 @@ const Videopage = () => {
                 {vv?.filepath ? (
                   <video
                     ref={videoRef}
-                    src={`${process.env.REACT_APP_API_URL || 'https://multi-media-backend1.onrender.com'}/${vv.filepath}`}
+                    src={`${process.env.REACT_APP_API_URL || 'http://localhost:5000'}/${vv.filepath}`}
                     className="video_ShowVideo_videoPage"
                     controls
-                    loop={isLooping}
+
                     onEnded={handleVideoCompletion} // Handle video completion
                     onTimeUpdate={handleTimeUpdate} // Handle time limit
                   ></video>
                 ) : (
                   <div className="video-loading">Loading video...</div>
                 )}
-                <div className="custom-video-controls">
-                  <button
-                    className={`loop-button ${isLooping ? 'active' : ''}`}
-                    onClick={(e) => {
-                      e.stopPropagation(); // Prevent video click handler from firing
-                      toggleLoopMode();
-                    }}
-                    title={isLooping ? 'Disable loop' : 'Enable loop'}
-                  >
-                    <span className="loop-icon">🔄</span>
-                  </button>
-                </div>
+                {/* Loop controls removed */}
               </div>
               {showTimeWarning && (
                 <div className="time-warning-overlay">

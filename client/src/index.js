@@ -11,7 +11,7 @@ import { applyMiddleware,compose } from 'redux';
 import {legacy_createStore as createstore} from "redux"
 import {thunk} from "redux-thunk"
 import Reducers from './Reducers';
-import { ThemeProvider } from './context/ThemeContext';
+import { ThemeProvider, ThemeContext } from './context/ThemeContext';
 import LocationBasedAuth from './components/LocationBasedAuth';
 
 const darkTheme = {
@@ -48,6 +48,40 @@ const darkTheme = {
     },
 };
 
+const whiteTheme = {
+    general: {
+        backgroundColor: '#ffffff',
+        color: '#000000',
+    },
+    elements: {
+        formButtonPrimary: {
+            backgroundColor: '#1a73e8',
+            color: '#ffffff',
+        },
+        card: {
+            backgroundColor: '#ffffff',
+            boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+        },
+        headerTitle: {
+            color: '#000000',
+        },
+        headerSubtitle: {
+            color: '#5f6368',
+        },
+        formFieldInput: {
+            backgroundColor: '#ffffff',
+            borderColor: '#dadce0',
+            color: '#000000',
+        },
+        formFieldLabel: {
+            color: '#5f6368',
+        },
+        footer: {
+            color: '#5f6368',
+        },
+    },
+};
+
 const store = createstore(Reducers,compose(applyMiddleware(thunk)));
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -55,13 +89,26 @@ if (!process.env.REACT_APP_CLERK_PUBLISHABLE_KEY) {
   throw new Error("Missing Publishable Key")
 }
 
-root.render(
-  <Provider store={store}>
+// Create a component that wraps ClerkProvider with theme awareness
+const ThemedApp = () => {
+  const [currentTheme, setCurrentTheme] = React.useState('dark');
+
+  // Function to update Clerk theme based on our app theme
+  const updateClerkTheme = (isWhite) => {
+    setCurrentTheme(isWhite ? 'white' : 'dark');
+  };
+
+  return (
     <ClerkProvider
       publishableKey={process.env.REACT_APP_CLERK_PUBLISHABLE_KEY}
       appearance={{
-        baseTheme: darkTheme,
-        variables: {
+        baseTheme: currentTheme === 'white' ? whiteTheme : darkTheme,
+        variables: currentTheme === 'white' ? {
+          colorPrimary: '#1a73e8',
+          colorBackground: '#ffffff',
+          colorText: '#000000',
+          colorTextSecondary: '#5f6368',
+        } : {
           colorPrimary: '#8ab4f8',
           colorBackground: '#202124',
           colorText: '#ffffff',
@@ -71,11 +118,29 @@ root.render(
     >
       <ThemeProvider>
         <LocationBasedAuth />
+        <ThemeListener onThemeChange={updateClerkTheme} />
         <React.StrictMode>
           <App />
         </React.StrictMode>
       </ThemeProvider>
     </ClerkProvider>
+  );
+};
+
+// Component to listen for theme changes
+const ThemeListener = ({ onThemeChange }) => {
+  const { isWhiteTheme } = React.useContext(ThemeContext);
+
+  React.useEffect(() => {
+    onThemeChange(isWhiteTheme);
+  }, [isWhiteTheme, onThemeChange]);
+
+  return null;
+};
+
+root.render(
+  <Provider store={store}>
+    <ThemedApp />
   </Provider>
 );
 

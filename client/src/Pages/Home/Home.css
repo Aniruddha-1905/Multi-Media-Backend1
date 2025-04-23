@@ -7,6 +7,12 @@
     top: 0;
     border-bottom: 2px solid rgb(128,128,128,0.27);
 }
+
+.white-theme .navigation_Home {
+    color: black;
+    background-color: #ffffff;
+    border-bottom: 2px solid rgba(0,0,0,0.1);
+}
 .btn_nav_home{
     background-color: rgb(46,46,46);
     margin: 0.5rem;
@@ -14,6 +20,13 @@
     border-radius: 45px;
     cursor: pointer;
 }
+.white-theme .btn_nav_home {
+    background-color: #f1f1f1;
+    color: black;
+}
 .btn_nav_home:hover{
     background-color: rgb(128,128,128);
+}
+.white-theme .btn_nav_home:hover {
+    background-color: #e0e0e0;
 }

@@ -1,21 +1,35 @@
 :root {
-    /* Light theme variables */
-    --light-bg: #ffffff;
-    --light-text: #333333;
+    /* White theme variables (for South India and 10AM-12PM) */
+    --white-bg: #ffffff;
+    --white-text: #000000;
+    --white-primary: #1a73e8;
+    --white-secondary: #f1f3f4;
+    --white-border: #e0e0e0;
+
+    /* Light theme variables (for mobile) */
+    --light-bg: #f8f9fa;
+    --light-text: #202124;
     --light-primary: #1a73e8;
     --light-secondary: #f1f3f4;
+    --light-border: #e0e0e0;
 
-    /* Dark theme variables */
+    /* Dark theme variables (default) */
     --dark-bg: #202124;
     --dark-text: #ffffff;
     --dark-primary: #8ab4f8;
     --dark-secondary: #303134;
+    --dark-border: #444444;
 }
 
 body {
     margin: 0;
     padding: 0;
     transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.white-theme {
+    background-color: var(--white-bg);
+    color: var(--white-text);
 }
 
 body.light-theme {

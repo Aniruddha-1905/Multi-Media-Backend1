@@ -3,6 +3,11 @@
     padding: 1rem 2rem;
     color: aliceblue;
 }
+
+.white-theme .container_libraryPage {
+    color: #000000;
+    border-bottom: 1px solid #e0e0e0;
+}
 .title_container_LibraryPage{
     margin: 0.5rem 4rem;
 }
@@ -11,6 +16,10 @@
     padding:  auto 0.5rem;
     font-size: medium;
     color: #ffffff;
+}
+
+.white-theme .title_container_LibraryPage b {
+    color: #000000;
 }
 
 .view-all-link {

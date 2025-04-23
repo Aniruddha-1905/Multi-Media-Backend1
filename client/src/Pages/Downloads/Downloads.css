@@ -4,6 +4,11 @@
     color: aliceblue;
 }
 
+.white-theme .container_downloadsPage {
+    border-bottom: 1px solid #e0e0e0;
+    color: #000000;
+}
+
 .downloads-header {
     display: flex;
     justify-content: space-between;
@@ -23,6 +28,10 @@
     color: #3ea6ff;
 }
 
+.white-theme .downloads-icon {
+    color: #1a73e8;
+}
+
 .upgrade-premium-btn {
     display: flex;
     align-items: center;
@@ -33,6 +42,11 @@
     padding: 8px 16px;
     cursor: pointer;
     font-weight: bold;
+}
+
+.white-theme .upgrade-premium-btn {
+    background-color: #1a73e8;
+    color: white;
 }
 
 .upgrade-premium-btn svg {
@@ -98,9 +112,18 @@
     margin-bottom: 1rem;
 }
 
+.white-theme .download-limit-info {
+    background-color: rgba(26, 115, 232, 0.05);
+    border: 1px solid #1a73e8;
+}
+
 .download-limit-info p {
     margin: 5px 0;
     color: #ddd;
+}
+
+.white-theme .download-limit-info p {
+    color: #333;
 }
 
 .container_videoList_DownloadsPage {
@@ -122,9 +145,17 @@
     color: #aaa;
 }
 
+.white-theme .no-downloads {
+    color: #666;
+}
+
 .no-downloads svg {
     color: #3ea6ff;
     margin-bottom: 1rem;
+}
+
+.white-theme .no-downloads svg {
+    color: #1a73e8;
 }
 
 .no-downloads p {
@@ -155,10 +186,21 @@
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
 }
 
+.white-theme .premium-modal {
+    background-color: #ffffff;
+    color: #000000;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
 .premium-modal h2 {
     color: #3ea6ff;
     margin-bottom: 15px;
     text-align: center;
+}
+
+.white-theme .premium-modal h2 {
+    color: #1a73e8;
 }
 
 .premium-modal p {

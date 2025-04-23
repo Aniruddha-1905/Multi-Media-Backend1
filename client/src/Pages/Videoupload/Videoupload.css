@@ -6,6 +6,10 @@
     z-index: 100;
     display: flex;
   }
+
+  .white-theme .container_VidUpload {
+    background-color: rgba(0, 0, 0, 0.3);
+  }
   .container2_VidUpload {
     box-shadow: 2px 2px rgba(142, 142, 142, 0.681),
       -2px -2px rgba(142, 142, 142, 0.681);
@@ -20,6 +24,13 @@
     flex-direction: column;
     border-radius: 1rem;
   }
+
+  .white-theme .container2_VidUpload {
+    background-color: white;
+    color: #333333;
+    box-shadow: 2px 2px rgba(0, 0, 0, 0.2),
+      -2px -2px rgba(0, 0, 0, 0.2);
+  }
   .ibox_vidupload {
     margin: 0.5rem;
     font-size: larger;
@@ -28,6 +39,11 @@
     padding: 0.2rem;
     color: aliceblue;
     width: calc(100% - 2rem);
+  }
+
+  .white-theme .ibox_vidupload {
+    color: #333333;
+    border: 1px solid #cccccc;
   }
   .ibox_div_vidupload {
     display: flex;
@@ -41,13 +57,23 @@
       color: white;
       font-weight: bolder;
       border: 2px solid;
-      
+
   }
-  
+
+  .white-theme .btn_vidUpload {
+      background-color: #f1f1f1;
+      color: #333333;
+      border: 2px solid #1a73e8;
+  }
+
   .btn_vidUpload:hover {
       color: orange;
   }
-  
+
+  .white-theme .btn_vidUpload:hover {
+      color: #1a73e8;
+  }
+
   .loader{
       width: 7rem;
       height: 7rem;

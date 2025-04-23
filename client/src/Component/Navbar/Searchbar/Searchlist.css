@@ -5,6 +5,9 @@
     top: 2.7rem;
     height: fit-content;
     z-index: 91;
+    color: #000000;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 .titleItem{
     margin: 0;

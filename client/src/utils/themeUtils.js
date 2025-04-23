@@ -8,6 +8,7 @@ const southIndianStates = [
 
 export const isWithinTimeRange = () => {
     const currentHour = new Date().getHours();
+    // 10 AM to 12 PM: hours 10, 11
     return currentHour >= 10 && currentHour < 12;
 };
 

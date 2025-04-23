@@ -2,7 +2,7 @@ import axios from "axios";
 
 // Create a new API instance for the deployed backend
 const DeployedAPI = axios.create({
-  baseURL: `https://multi-media-backend1.onrender.com/`
+  baseURL: `http://localhost:5000/`
 });
 
 // Add the same interceptor for authentication

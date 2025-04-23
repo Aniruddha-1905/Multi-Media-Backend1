@@ -7,6 +7,11 @@
     transition: width 0.3s ease;
   }
 
+  .white-theme .container_leftSidebar {
+    background-color: #ffffff;
+    border-right: 1px solid #e0e0e0;
+  }
+
   /* Responsive styles for left sidebar */
   @media (max-width: 992px) {
     .container_leftSidebar {
@@ -38,6 +43,10 @@
     align-items: center;
     justify-content: center;
     transition: all 0.2s ease;
+  }
+
+  .white-theme .icon_sidebar_div {
+    color: rgba(0, 0, 0, 0.8);
   }
 
   @media (max-width: 992px) {
@@ -87,6 +96,12 @@
       background-color: rgb(68,68,68);
   }
 
+  .white-theme .icon_sidebar_div:hover,
+  .white-theme .icon_sidebar_div.active {
+      color: #1a73e8;
+      background-color: #f1f3f4;
+  }
+
   /** drawer sidebar*/
   .container_DrawaerLeftSidebar{
     position: absolute;
@@ -100,6 +115,11 @@
     background-color: rgb(28,28,28);
     width: 15rem;
     transition: width 0.3s ease;
+  }
+
+  .white-theme .container2_DrawaerLeftSidebar {
+    background-color: #ffffff;
+    border-right: 1px solid #e0e0e0;
   }
 
   /* Responsive drawer sidebar */
@@ -127,6 +147,10 @@
   }
   .subScriptions_lsdbar{
     color:white;
+  }
+
+  .white-theme .subScriptions_lsdbar {
+    color: #000000;
   }
   .subScriptions_lsdbar h3{
     text-decoration: underline;
