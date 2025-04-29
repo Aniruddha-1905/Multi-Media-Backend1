@@ -25,7 +25,7 @@ const Showvideo = ({vid}) => {
   return (
         <>
       <Link to={`/videopage/${vid._id}`}>
-        <video src={`http://localhost:5000/${vid.filepath}`} className='video_ShowVideo'/>
+        <video src={`https://multi-media-backend1.onrender.com/${vid.filepath}`} className='video_ShowVideo'/>
     </Link>
     <div className="video_description">
         <div className="Chanel_logo_App">

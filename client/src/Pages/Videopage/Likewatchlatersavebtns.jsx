@@ -117,7 +117,7 @@ const handleDownload = async () => {
       if (result.success) {
         // Create a temporary link to download the video
         const link = document.createElement('a');
-        link.href = `http://localhost:5000/${result.videoPath}`;
+        link.href = `https://multi-media-backend1.onrender.com/${result.videoPath}`;
         link.download = result.videoTitle || 'video';
         document.body.appendChild(link);
         link.click();
